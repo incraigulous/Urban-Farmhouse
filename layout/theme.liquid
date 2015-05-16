@@ -10,6 +10,7 @@
   <!-- Bootstrap Core CSS -->
   <link href="{{ 'css-bootstrap-min.css' | asset_url }}" rel="stylesheet">
   <link href="{{ 'css-bs4sf.css' | asset_url }}" rel="stylesheet">
+  <link href="{{ 'all.css' | asset_url }}" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js support for HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -84,6 +85,7 @@
   {{ 'js-jquery-min.js' | asset_url | script_tag }}
   {{ 'js-bootstrap-min.js' | asset_url | script_tag }}
   {{ 'js-bs4sf-min.js' | asset_url | script_tag }}
+  {{ 'all.js' | asset_url | script_tag }}
 
   <!-- If we're on a product page, set up product page. -->
   {% if template == 'product' %}

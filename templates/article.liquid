@@ -6,12 +6,14 @@
     <h1>{{ blog.title }}</h1>
 </header>
 
-<!-- Article title. -->
-<h2>{{ article.title }}</h2>
+<div id="post">
+    <!-- Article title. -->
+    <h2>{{ article.title }}</h2>
 
-<!-- Article byline and content. -->
-<h3 class="lead text-muted">{{ article.published_at | date: "%d %B %Y" }} by {{ article.author }}</h3>
-{{ article.content }}
+    <!-- Article byline and content. -->
+    <h3 class="lead text-muted">{{ article.published_at | date: "%d %B %Y" }} by {{ article.author }}</h3>
+    {{ article.content }}
+</div>
 
 <!-- Pager to previous and next articles in this blog. -->
 <ul class="pager">
