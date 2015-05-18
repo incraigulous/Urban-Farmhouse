@@ -1,32 +1,29 @@
 <header class="page-header">
-    <!-- Atom Feed Subscribe Link -->
-    <a href="{{ blog.url }}.atom" title="Subscribe to Atom Feed" class="pull-right"><span class="glyphicon glyphicon-pushpin"></span></a>
-
     <!-- Blog Title -->
     <h1>{{ blog.title }}</h1>
 </header>
 
 <div class="container">
   <div class="row">
+      <!-- Articles List -->
+      <div class="col-md-9 list-view">
+          {% paginate blog.articles by 5 %}
+          {% for article in blog.articles %}
+              <h4><a href="{{ article.url }}">{{ article.title | escape }}</a> </h4>
 
-    <!-- Articles List -->
-    <div class="col-md-9">
-        <div class="blog-view">
-          <div class="scroller scroller-left"><i class="glyphicon glyphicon-chevron-left"></i></div>
-          <div class="scroller scroller-right"><i class="glyphicon glyphicon-chevron-right"></i></div>
+              {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt }}
+              {% else %}
+                  <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+              {% endif %}
 
-          <div class="wrapper">
-              <ul class="nav nav-tabs list" id="myTab">
-                  {% for article in blog.articles %}
-                      <li class="active"><a href="{{ article.url }}">{{ article.title | escape }}</a></li>
-                  {% endfor %}
-              </ul>
+              <small class="text-muted">{{ article.published_at | date: "%d %B %Y" }} by {{ article.author }}</small>
+          {% endfor %}
+
+          <div class="text-center">
+              {% include 'pagination' with 'post' %}
           </div>
-        </div>
-
-        <div id="post">
-
-        </div>
+          {% endpaginate %}
       </div>
     </div>
 </div>

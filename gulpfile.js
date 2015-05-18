@@ -27,6 +27,7 @@ gulp.task('default', function () {
     .pipe(gulp.dest('assets'));
 
     gulp.src([
+        'assets/vendor.css',
         'assets/main.css'
         ]).pipe(concat('all.css'))
           .pipe(minify())

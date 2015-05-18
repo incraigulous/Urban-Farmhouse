@@ -1,45 +1,25 @@
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: 35px auto 0 auto;
+}
+
+.main-nav {
+    margin-top: 90px;
+}
+
+.carousel video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
 .blog-view .wrapper {
     position:relative;
     margin:0 auto;
     overflow:hidden;
     padding:5px;
     height:50px;
-}
-
-.blog-view .list {
-    position:absolute;
-    left:0px;
-    top:0px;
-    min-width:3000px;
-    margin-left:12px;
-    margin-top:0px;
-}
-
-.blog-view .list li{
-    display:table-cell;
-    position:relative;
-    text-align:center;
-    cursor:grab;
-    cursor:-webkit-grab;
-    color:#efefef;
-    vertical-align:middle;
-}
-
-.blog-view .scroller {
-    text-align:center;
-    cursor:pointer;
-    display:none;
-    padding:7px;
-    padding-top:11px;
-    white-space:no-wrap;
-    vertical-align:middle;
-    background-color:#fff;
-}
-
-.blog-view .scroller-right{
-    float:right;
-}
-
-.blog-view .scroller-left {
-    float:left;
 }

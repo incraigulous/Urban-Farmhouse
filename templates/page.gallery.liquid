@@ -1,0 +1,34 @@
+<header class="page-header">
+  <h1>{{ page.title }}</h1>
+</header>
+
+<div class="container">
+    <!-- Include any custom content. -->
+    {{ page.content }}
+
+    <div class="row">
+
+        <!-- Articles List -->
+        <div class="col-md-9">
+
+            <div class="blog-view">
+                <div class="wrapper">
+                    <div class="list">
+                        {% for article in blogs[page.handle].articles limit: 50 %}
+                        {% assign src = '' %}
+                        {% if article.content contains "<img" %}
+                        {% assign src = article.content | split: 'src="' %}
+                        {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+                        {% endif %}
+                        <div><a href="{{ article.url }}" article-id="{{ article.id }}" style="background-image:url('{{ src }}');">{{ article.title | escape }}</a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div id="post">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{% if collections.size != 0 %}
+    {% for collection in collections %}
+        {% capture iteration %}{% cycle '1', '2', '3' %}{% endcapture %}
+        {% if iteration == '1' %}
+            <div class="row">
+        {% endif %}
+
+                <div class="col-md-4">
+                    <a href="{{ collection.url }}" title="{{ collection.title | escape }}" class="thumbnail">
+                        {% if collection.image %}
+                            <img src="{{ collection.image | collection_img_url: 'medium' }}" alt="{{ collection.title | escape }}" />
+                        {% else %}
+                            <img src="{{ collection.products.first.featured_image | product_img_url: 'medium' }}" alt="{{ collection.title | escape }}" />
+                        {% endif %}
+                    </a>
+
+                    <h5>{{ collection.title | escape }} <small>{{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'item', 'items' }}</small></h5>
+                </div>
+
+        {% if iteration == '3' or forloop.last %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}

@@ -25,7 +25,7 @@
 
       <!-- Display linklist selected in theme settings. -->
       {% unless linklists[settings.navbar_linklist] == empty %}
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav main-nav">
         {% for link in linklists[settings.navbar_linklist].links %}
 
           <!-- Check to see if this menu item has a child menu. -->
@@ -50,26 +50,31 @@
       {% endunless %}
 
       <!-- Additional (Right) Navigation Links -->
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="/search" title="Search..."><span class="glyphicon glyphicon-search"></span></a>
-        </li>
-        {% if shop.customer_accounts_enabled %}
-          {% if customer %}
-            <li>
-              <a href="/account">{{ customer.first_name }} {{ customer.last_name }}</a>
-            </li>
-          {% else %}
-            <li>
-              {{ "Log In" | customer_login_link }}
-            </li>
-          {% endif %}
-        {% endif %}
-        <li>
-          <a href="/cart">Cart ({{ cart.item_count }})</a>
-        </li>
-      </ul>
-
+      <div class="navbar-right">
+          <ul class="nav navbar-nav">
+              <li>
+                  <a href="/search" title="Search..."><span class="glyphicon glyphicon-search"></span></a>
+              </li>
+              {% if shop.customer_accounts_enabled %}
+                  {% if customer %}
+                      <li>
+                          <a href="/account">{{ customer.first_name }} {{ customer.last_name }}</a>
+                      </li>
+                  {% else %}
+                      <li>
+                          {{ "Log In" | customer_login_link }}
+                      </li>
+                  {% endif %}
+              {% endif %}
+              <li>
+                  <a href="/cart">Cart ({{ cart.item_count }})</a>
+              </li>
+          </ul>
+          <!-- Social Media Icons -->
+          <ul class="list-inline">
+              {% include 'footer-social' %}
+          </ul>
+      </div>
     </div>
   </div>
 </nav>

@@ -222,6 +222,90 @@
             "label": "Fix to top of screen"
           }
         ]
+      },
+      {
+        "type": "header",
+        "content": "Displayed Social Media Links"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_twitter",
+        "label": "Show Twitter"
+      },
+      {
+        "type": "text",
+        "id": "social_url_twitter",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_facebook",
+        "label": "Show Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_url_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_pinterest",
+        "label": "Show Pinterest"
+      },
+      {
+        "type": "text",
+        "id": "social_url_pinterest",
+        "label": "Pinterest URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_email",
+        "label": "Show Email"
+      },
+      {
+        "type": "text",
+        "id": "social_email_address",
+        "label": "Email Address"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_google_plus",
+        "label": "Show Google Plus"
+      },
+      {
+        "type": "text",
+        "id": "social_url_google_plus",
+        "label": "G+ URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_flickr",
+        "label": "Show Flickr"
+      },
+      {
+        "type": "text",
+        "id": "social_url_flickr ",
+        "label": "Flickr URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_youtube",
+        "label": "Show YouTube"
+      },
+      {
+        "type": "text",
+        "id": "social_url_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_tumblr",
+        "label": "Show Tumblr"
+      },
+      {
+        "type": "text",
+        "id": "social_url_tumblr",
+        "label": "Tumblr URL"
       }
     ]
   },
@@ -272,6 +356,29 @@
       {
         "type": "paragraph",
         "content": "Slide images will be resized automatically to fit the slideshow. Images have a maximum width of 1200px, and it's recommended to have all slide images the same height to avoid shifting page heights."
+      },
+      {
+        "type": "header",
+        "content": "Video"
+      },
+      {
+        "type": "paragraph",
+        "content": "If a video is set, it will display instead of the image slideshow."
+      },
+      {
+        "type": "checkbox",
+        "id": "slideshow_video",
+        "label": "Use a video"
+      },
+      {
+        "type": "text",
+        "id": "slideshow_video_mp4_url",
+        "label": "MP4 URL"
+      },
+      {
+        "type": "text",
+        "id": "slideshow_video_ogg_url",
+        "label": "OGG URL"
       },
       {
         "type": "header",
@@ -588,90 +695,6 @@
         "type": "checkbox",
         "id": "pay_jcb",
         "label": "JCB"
-      },
-      {
-        "type": "header",
-        "content": "Displayed Social Media Links"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_twitter",
-        "label": "Show Twitter"
-      },
-      {
-        "type": "text",
-        "id": "social_url_twitter",
-        "label": "Twitter URL"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_facebook",
-        "label": "Show Facebook"
-      },
-      {
-        "type": "text",
-        "id": "social_url_facebook",
-        "label": "Facebook URL"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_pinterest",
-        "label": "Show Pinterest"
-      },
-      {
-        "type": "text",
-        "id": "social_url_pinterest",
-        "label": "Pinterest URL"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_email",
-        "label": "Show Email"
-      },
-      {
-        "type": "text",
-        "id": "social_email_address",
-        "label": "Email Address"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_google_plus",
-        "label": "Show Google Plus"
-      },
-      {
-        "type": "text",
-        "id": "social_url_google_plus",
-        "label": "G+ URL"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_flickr",
-        "label": "Show Flickr"
-      },
-      {
-        "type": "text",
-        "id": "social_url_flickr ",
-        "label": "Flickr URL"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_youtube",
-        "label": "Show YouTube"
-      },
-      {
-        "type": "text",
-        "id": "social_url_youtube",
-        "label": "YouTube URL"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_show_tumblr",
-        "label": "Show Tumblr"
-      },
-      {
-        "type": "text",
-        "id": "social_url_tumblr",
-        "label": "Tumblr URL"
       }
     ]
   }
