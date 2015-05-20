@@ -1,0 +1,8 @@
+{% comment %}
+
+  This is a flash message shown at the top of each page if set.
+
+{% endcomment %}
+{% if settings.show_flash_message %}
+    <div class="alert alert-info" role="alert">{{ settings.flash_message }}</div>
+{% endif %}

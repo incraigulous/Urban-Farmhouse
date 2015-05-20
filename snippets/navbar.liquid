@@ -9,6 +9,13 @@
         <span class="icon-bar"></span>
       </button>
 
+    <!-- Additional (Right) Navigation Links -->
+    <div class="navbar-left">
+        <form method="get" action="/search" class="search">
+            <input name="q" class="form-control" type="search" placeholder="Search..."/>
+        </form>
+    </div>
+
       <!-- Brand / Logo -->
       <a class="navbar-brand" href="{{ shop.url }}" title="{{ shop.name }}">
         {% unless settings.logo_navbar == 'text' %}
