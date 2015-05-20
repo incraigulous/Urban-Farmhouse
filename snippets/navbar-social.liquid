@@ -12,11 +12,11 @@
     {% capture social_url_setting %}social_url_{{ social_type }}{% endcapture %}
     {% if social_type == 'email' %}
     <li>
-      <a href="mailto:{{ settings[social_email_address] }}" title="Email {{ shop.name }}"><span class="sprite sprite-social social_{{ social_type }}"></span></a>
+      <a href="mailto:{{ settings[social_email_address] }}" title="Email {{ shop.name }}"><i class="fa fa-{{ social_type }}"></a>
     </li>
     {% else %}
     <li>
-      <a href="{{ settings[social_url_setting] }}" title="{{ shop.name }} on {{ social_type | captialize }}"><span class="sprite sprite-social social_{{ social_type }}"></span></a>
+      <a href="{{ settings[social_url_setting] }}" title="{{ shop.name }} on {{ social_type | captialize }}"><i class="fa fa-{{ social_type }}"></i></a>
     </li>
     {% endif %}
   {% endif %}

@@ -259,7 +259,7 @@
       },
       {
         "type": "checkbox",
-        "id": "social_show_email",
+        "id": "social_show_envelope-o",
         "label": "Show Email"
       },
       {
@@ -269,7 +269,7 @@
       },
       {
         "type": "checkbox",
-        "id": "social_show_google_plus",
+        "id": "social_show_google-plus",
         "label": "Show Google Plus"
       },
       {
@@ -306,6 +306,26 @@
         "type": "text",
         "id": "social_url_tumblr",
         "label": "Tumblr URL"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_vimeo-square",
+        "label": "Show Vimeo"
+      },
+      {
+        "type": "text",
+        "id": "social_url_vimeo",
+        "label": "Vimeo Url"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_show_instagram",
+        "label": "Show Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_url_instagram",
+        "label": "Instagram Url"
       }
     ]
   },
