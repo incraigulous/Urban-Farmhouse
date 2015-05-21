@@ -54,16 +54,22 @@
   {% include 'navbar' %}
 
   <!-- Slideshow, if we'd like it full width. -->
-  {% if settings.slideshow_position == "full" and template == "index" %}{% include 'slideshow' %}{% endif %}
+  {% if settings.slideshow_position == "full" and template == "index" %}
+      {% include 'slideshow' %}
+  {% endif %}
 
   <!-- Content -->
   <section id="content" class="container">
     <!-- Slideshow, if we'd like it within the page container. -->
-    {% if settings.slideshow_position == "top" and template == "index" %}{% include 'slideshow' %}{% endif %}
+    {% if settings.slideshow_position == "top" and template == "index" %}
+        {% include 'slideshow' %}
+    {% endif %}
     <div class="row">
       <div class="{{ sidebar_class_content }}">
         <!-- Slideshow, if we'd like it within the content container. -->
-        {% if settings.slideshow_position == "content" and template == "index" %}{% include 'slideshow' %}{% endif %}
+        {% if settings.slideshow_position == "content" and template == "index" %}
+            {% include 'slideshow' %}
+        {% endif %}
         <!--
           Shopify doesn't let us override list-collections.liquid directly.
           Instead, we have to use this hack to customise our /collections and /products pages.
@@ -86,10 +92,8 @@
   {% include 'footer' %}
 
   <!-- Bootstrap and core Bootstrap for Shopify Javascript -->
-  {{ 'js-jquery-min.js' | asset_url | script_tag }}
-  {{ 'js-bootstrap-min.js' | asset_url | script_tag }}
-  {{ 'js-bs4sf-min.js' | asset_url | script_tag }}
   {{ 'all.js' | asset_url | script_tag }}
+  {{ 'js-bs4sf-min.js' | asset_url | script_tag }}
 
   <!-- If we're on a product page, set up product page. -->
   {% if template == 'product' %}

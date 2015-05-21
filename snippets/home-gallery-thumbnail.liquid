@@ -1,0 +1,14 @@
+{% for article in blogs[blog].articles limit: 20 %}
+    {% assign src = '' %}
+    {% if article.content contains "<img" %}
+        {% assign src = article.content | split: 'src="' %}
+        {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+    {% endif %}
+
+    {% if src != blank %}
+        <div>
+            <a href="pages/{{ blog }}?article={{ article.id }}" style="background-image:url('{{ src }}');">{{ article.title | escape }}</a>
+        </div>
+        {% break %}
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,9 @@
+<h2>Customer Stories</h2>
+{% for article in blogs['news'].articles limit: 8 %}
+    <div>
+        <div>
+            {{ article.content | strip_html}}
+        </div>
+        {{ article.title }}
+    </div>
+{% endfor %}

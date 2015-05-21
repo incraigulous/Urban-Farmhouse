@@ -40,7 +40,7 @@
           {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}{% assign has_dropdown = true %}{% else %}{% assign has_dropdown = false %}{% endif %}
 
           <li class="{% if link.active %}active{% endif %} {% if has_dropdown %}dropdown{% endif %}">
-            <a href="{{ link.url }}" {% if has_dropdown %}class="dropdown-toggle" data-toggle="dropdown"{% endif %}>
+            <a href="{{ link.url }}" {% if has_dropdown %}class="dropdown-toggle" data-hover="dropdown" data-delay="200" data-toggle="dropdown"{% endif %}>
               {{ link.title }}
               {% if has_dropdown %}<b class="caret"></b>{% endif %}
             </a>
