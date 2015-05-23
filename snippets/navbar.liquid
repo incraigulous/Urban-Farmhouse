@@ -12,19 +12,17 @@
     <!-- Additional (Right) Navigation Links -->
     <div class="navbar-left">
         <form method="get" action="/search" class="search">
-            <input name="q" class="form-control" type="search" placeholder="Search..."/>
+            <input name="q" class="form-control" type="search" placeholder="search"/>
         </form>
     </div>
 
       <!-- Brand / Logo -->
-      <a class="navbar-brand" href="{{ shop.url }}" title="{{ shop.name }}">
-        {% unless settings.logo_navbar == 'text' %}
-          <img src="{{ 'logo_navbar_image' | asset_url }}" alt="{{ shop.name }}" />
-        {% endunless %}
-        {% unless settings.logo_navbar == 'image' %}
-          {{ shop.name }}
-        {% endunless %}
-      </a>
+        <div class="navbar-brand">
+            <a href="{{ shop.url }}" title="{{ shop.name }}">
+                <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" width="301" />
+            </a>
+        </div>
+
     </div>
 
     <!-- Collapsible Navbar Content -->
@@ -59,9 +57,6 @@
       <!-- Additional (Right) Navigation Links -->
       <div class="navbar-right">
           <ul class="nav navbar-nav">
-              <li>
-                  <a href="/search" title="Search..."><span class="glyphicon glyphicon-search"></span></a>
-              </li>
               {% if shop.customer_accounts_enabled %}
                   {% if customer %}
                       <li>
@@ -74,7 +69,7 @@
                   {% endif %}
               {% endif %}
               <li>
-                  <a href="/cart">Cart ({{ cart.item_count }})</a>
+                  <a href="/cart"><i class="fa fa-shopping-cart"></i> Cart ({{ cart.item_count }})</a>
               </li>
           </ul>
           <!-- Social Media Icons -->

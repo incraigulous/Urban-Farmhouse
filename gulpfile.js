@@ -25,11 +25,4 @@ gulp.task('default', function () {
             compress: false
    }))
     .pipe(gulp.dest('assets'));
-
-    gulp.src([
-        'assets/vendor.css',
-        'assets/main.css'
-        ]).pipe(concat('all.css'))
-          .pipe(minify())
-          .pipe(gulp.dest('assets'));
 });

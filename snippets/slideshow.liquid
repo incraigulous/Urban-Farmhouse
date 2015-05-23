@@ -7,36 +7,34 @@
    - http://getbootstrap.com/javascript/#carousel
 
 {% endcomment %}
-{% if settings['slideshow_video'] %}
-    <video width="100%" height="240" autoplay loop>
-        <source src="{{ settings['slideshow_video_mp4_url'] }}" type="video/mp4">
-        <source src="{{ settings['slideshow_video_ogg_url'] }}" type="video/ogg">
-        Your browser does not support the video tag.
-    </video>
-{% else %}
-    <div class="slider">
-        <!-- Carousel Items -->
-        {% for i in (1..5) %}
+<div class="slider">
+    <!-- Carousel Items -->
+    {% for i in (1..5) %}
 
-          {% capture setting_show %}slideshow_show_{{i}}{% endcapture %}
-          {% capture setting_url %}slideshow_url_{{i}}{% endcapture %}
-          {% capture setting_title %}slideshow_title_{{i}}{% endcapture %}
-          {% capture setting_description %}slideshow_description_{{i}}{% endcapture %}
+        {% capture setting_show %}slideshow_show_{{i}}{% endcapture %}
+        {% capture setting_url %}slideshow_url_{{i}}{% endcapture %}'
+        {% capture setting_button_text %}slideshow_url_{{i}}_text{% endcapture %}
+        {% capture setting_title %}slideshow_title_{{i}}{% endcapture %}
+        {% capture setting_description %}slideshow_description_{{i}}{% endcapture %}
 
-          {% if settings[setting_show] %}
-          <div>
-            {% unless settings[setting_url] == '' %}<a href="{{ settings[setting_url] }}">{% endunless %}
-              <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} />
+        {% if settings[setting_show] %}
+            <div>
+                <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} />
+                {% if settings[setting_title] or settings[setting_description] %}
+                    <div class="caption">
+                        {% if settings[setting_title] %}<h4>{{ settings[setting_title] }}</h4>{% endif %}
+                        {% if settings[setting_description] %}<p>{{ settings[setting_description] }}</p>{% endif %}
+                        {% unless settings[setting_url] == '' %}<a href="{{ settings[setting_url] }}" class="btn btn-default">{% endunless %}
+                            {% if settings[setting_button_text] != '' %}
+                                {{ settings[setting_button_text] }}
+                            {% else %}
+                                Read more
+                            {% endif %}
+                            {% unless settings[setting_url] == '' %}</a>{% endunless %}
+                    </div>
+                {% endif %}
 
-              {% if settings[setting_title] or settings[setting_description] %}
-              <div class="caption">
-                {% if settings[setting_title] %}<h4>{{ settings[setting_title] }}</h4>{% endif %}
-                {% if settings[setting_description] %}<p>{{ settings[setting_description] }}</p>{% endif %}
-              </div>
-              {% endif %}
-            {% unless settings[setting_url] == '' %}</a>{% endunless %}
-          </div>
-          {% endif %}
-        {% endfor %}
-  {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
 </div>

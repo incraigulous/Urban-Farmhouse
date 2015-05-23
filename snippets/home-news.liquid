@@ -1,9 +1,16 @@
-<h2>Customer Stories</h2>
-{% for article in blogs['news'].articles limit: 8 %}
+<h2>Latest News & Trends</h2>
+{% for article in blogs['news'].articles limit: 2 %}
     <div>
-        <div>
-            {{ article.content | strip_html}}
-        </div>
+        {% assign src = '' %}
+        {% if article.content contains "<img" %}
+            {% assign src = article.content | split: 'src="' %}
+            {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+         {% endif %}
         {{ article.title }}
+        <img src="{{ src }}" class="img-responsive">
+        <div>
+            {{ article.content | strip_html | truncatewords: 20}} <a href="pages/news?article={{ article.id }}"> READ MORE</a>
+        </div>
+        <a class="btn btn-default" href="pages/news?article={{ article.id }}">READ MORE</a>
     </div>
 {% endfor %}

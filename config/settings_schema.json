@@ -1,179 +1,5 @@
 [
   {
-    "name": "Appearance & Fonts",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Background"
-      },
-      {
-        "type": "select",
-        "id": "body_background_image",
-        "label": "Background Image",
-        "options": [
-          {
-            "value": "none",
-            "label": "No Image"
-          },
-          {
-            "value": "custom_background_image",
-            "label": "Use Custom Image"
-          }
-        ]
-      },
-      {
-        "type": "image",
-        "id": "custom_background_image"
-      },
-      {
-        "type": "select",
-        "id": "body_background_x",
-        "label": "Background Horizontal Position",
-        "options": [
-          {
-            "value": "0%",
-            "label": "Left"
-          },
-          {
-            "value": "50%",
-            "label": "Center"
-          },
-          {
-            "value": "100%",
-            "label": "Right"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "body_background_y",
-        "label": "Background Vertical Position",
-        "options": [
-          {
-            "value": "0%",
-            "label": "Top"
-          },
-          {
-            "value": "50%",
-            "label": "Center"
-          },
-          {
-            "value": "100%",
-            "label": "Bottom"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "body_background_repeat",
-        "label": "Background Tiling",
-        "options": [
-          {
-            "value": "no-repeat",
-            "label": "Don't Tile"
-          },
-          {
-            "value": "repeat",
-            "label": "Tile"
-          },
-          {
-            "value": "repeat-x",
-            "label": "Tile Horizontally"
-          },
-          {
-            "value": "repeat-y",
-            "label": "Tile Vertically"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "id": "body_background_color",
-        "label": "Background Color",
-        "default": "#FFFFFF"
-      },
-      {
-        "type": "header",
-        "content": "Footer"
-      },
-      {
-        "type": "color",
-        "id": "footer_background_color",
-        "label": "Footer Background Color",
-        "default": "#F8F8F8"
-      },
-      {
-        "type": "color",
-        "id": "footer_text_color",
-        "label": "Footer Text Color",
-        "default": "#777777"
-      },
-      {
-        "type": "color",
-        "id": "footer_link_color",
-        "label": "Footer Link Color",
-        "default": "#428bca"
-      },
-      {
-        "type": "color",
-        "id": "footer_link_hover_color",
-        "label": "Footer Link Hover Color",
-        "default": "#2a6496"
-      },
-      {
-        "type": "header",
-        "content": "Fonts"
-      },
-      {
-        "type": "select",
-        "id": "font_base",
-        "label": "Base Font",
-        "options": [
-          {
-            "value": "'Helvetica Neue', Helvetica, Arial, sans-serif",
-            "label": "Helvetica \/ Arial"
-          },
-          {
-            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
-            "label": "Lucida Grande"
-          },
-          {
-            "value": "Verdana, Helvetica, Arial, sans-serif",
-            "label": "Verdana"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "font_heading",
-        "label": "Heading Font",
-        "options": [
-          {
-            "value": "'Helvetica Neue', Helvetica, Arial, sans-serif",
-            "label": "Helvetica \/ Arial"
-          },
-          {
-            "value": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
-            "label": "Lucida Grande"
-          },
-          {
-            "value": "Verdana, Helvetica, Arial, sans-serif",
-            "label": "Verdana"
-          }
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Checkout"
-      },
-      {
-        "type": "image",
-        "id": "logo_checkout_image",
-        "label": "The checkout logo should be 65px high and approximately 650px wide."
-      }
-    ]
-  },
-  {
     "name": "Flash Message",
     "settings": [
       {
@@ -195,33 +21,6 @@
   {
     "name": "Navigation Bar",
     "settings": [
-      {
-        "type": "select",
-        "id": "logo_navbar",
-        "label": "Navbar Logo",
-        "options": [
-          {
-            "value": "text",
-            "label": "Store Name Only"
-          },
-          {
-            "value": "image",
-            "label": "Uploaded Image Only"
-          },
-          {
-            "value": "both",
-            "label": "Uploaded Image & Store Name"
-          }
-        ]
-      },
-      {
-        "type": "image",
-        "id": "logo_navbar_image"
-      },
-      {
-        "type": "paragraph",
-        "content": "Navbar logos will be scaled to a height of 40px - the recommended image size is 360px x 80px, for crisp logo display on high-resolution (Retina) devices."
-      },
       {
         "type": "link_list",
         "id": "navbar_linklist",
@@ -258,22 +57,22 @@
       },
       {
         "type": "checkbox",
-        "id": "social_show_facebook",
+        "id": "social_show_facebook-square",
         "label": "Show Facebook"
       },
       {
         "type": "text",
-        "id": "social_url_facebook",
+        "id": "social_url_facebook-square",
         "label": "Facebook URL"
       },
       {
         "type": "checkbox",
-        "id": "social_show_pinterest",
+        "id": "social_show_pinterest-square",
         "label": "Show Pinterest"
       },
       {
         "type": "text",
-        "id": "social_url_pinterest",
+        "id": "social_url_pinterest-square",
         "label": "Pinterest URL"
       },
       {
@@ -283,7 +82,7 @@
       },
       {
         "type": "text",
-        "id": "social_email_address",
+        "id": "social_envelope-o_address",
         "label": "Email Address"
       },
       {
@@ -398,29 +197,6 @@
       },
       {
         "type": "header",
-        "content": "Video"
-      },
-      {
-        "type": "paragraph",
-        "content": "If a video is set, it will display instead of the image slideshow."
-      },
-      {
-        "type": "checkbox",
-        "id": "slideshow_video",
-        "label": "Use a video"
-      },
-      {
-        "type": "text",
-        "id": "slideshow_video_mp4_url",
-        "label": "MP4 URL"
-      },
-      {
-        "type": "text",
-        "id": "slideshow_video_ogg_url",
-        "label": "OGG URL"
-      },
-      {
-        "type": "header",
         "content": "First Slide"
       },
       {
@@ -445,11 +221,16 @@
       },
       {
         "type": "text",
+        "id": "slideshow_url_1_text",
+        "label": "Link Text (Optional)"
+      },
+      {
+        "type": "text",
         "id": "slideshow_title_1",
         "label": "Caption Title (Optional)"
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "slideshow_description_1",
         "label": "Caption Content (Optional)"
       },
@@ -472,6 +253,11 @@
         "label": "Link URL (Optional)"
       },
       {
+        "type": "text",
+        "id": "slideshow_url_2_text",
+        "label": "Link Text (Optional)"
+      },
+      {
         "type": "image",
         "id": "slideshow-image-2.jpg",
         "label": "Image",
@@ -483,7 +269,7 @@
         "label": "Caption Title (Optional)"
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "slideshow_description_2",
         "label": "Caption Content (Optional)"
       },
@@ -506,6 +292,11 @@
         "label": "Link URL (Optional)"
       },
       {
+        "type": "text",
+        "id": "slideshow_url_3_text",
+        "label": "Link Text (Optional)"
+      },
+      {
         "type": "image",
         "id": "slideshow-image-3.jpg",
         "label": "Image",
@@ -517,7 +308,7 @@
         "label": "Caption Title (Optional)"
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "slideshow_description_3",
         "label": "Caption Content (Optional)"
       },
@@ -540,6 +331,11 @@
         "label": "Link URL (Optional)"
       },
       {
+        "type": "text",
+        "id": "slideshow_url_4_text",
+        "label": "Link Text (Optional)"
+      },
+      {
         "type": "image",
         "id": "slideshow-image-4.jpg",
         "label": "Image",
@@ -551,7 +347,7 @@
         "label": "Caption Title (Optional)"
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "slideshow_description_4",
         "label": "Caption Content (Optional)"
       },
@@ -574,6 +370,11 @@
         "label": "Link URL (Optional)"
       },
       {
+        "type": "text",
+        "id": "slideshow_url_5_text",
+        "label": "Link Text (Optional)"
+      },
+      {
         "type": "image",
         "id": "slideshow-image-5.jpg",
         "label": "Image",
@@ -585,7 +386,7 @@
         "label": "Caption Title (Optional)"
       },
       {
-        "type": "text",
+        "type": "textarea",
         "id": "slideshow_description_5",
         "label": "Caption Content (Optional)"
       }
