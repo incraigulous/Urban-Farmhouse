@@ -9,7 +9,8 @@ function process_content(item) {
     });
 
     $(item).find('.slider').each(function(index, el) {
-        $(el).on('init', function(event, slick, direction){
+        $(el).on('setPosition', function(event, slick, direction){
+            $('#slider-preloader').hide();
             $(el).fadeIn();
         });
 
