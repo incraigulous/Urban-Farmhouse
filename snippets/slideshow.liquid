@@ -12,14 +12,14 @@
     {% for i in (1..5) %}
 
         {% capture setting_show %}slideshow_show_{{i}}{% endcapture %}
-        {% capture setting_url %}slideshow_url_{{i}}{% endcapture %}'
+        {% capture setting_url %}slideshow_url_{{i}}{% endcapture %}
         {% capture setting_button_text %}slideshow_url_{{i}}_text{% endcapture %}
         {% capture setting_title %}slideshow_title_{{i}}{% endcapture %}
         {% capture setting_description %}slideshow_description_{{i}}{% endcapture %}
 
         {% if settings[setting_show] %}
-            <div>
-                <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} />
+            <div style="background: url('{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}') no-repeat;">
+                <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden;"/>
                 {% if settings[setting_title] or settings[setting_description] %}
                     <div class="caption">
                         {% if settings[setting_title] %}<h4>{{ settings[setting_title] }}</h4>{% endif %}

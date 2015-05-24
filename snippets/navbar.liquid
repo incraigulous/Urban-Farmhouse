@@ -22,7 +22,6 @@
                 <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" width="301" />
             </a>
         </div>
-
     </div>
 
     <!-- Collapsible Navbar Content -->
@@ -40,7 +39,6 @@
           <li class="{% if link.active %}active{% endif %} {% if has_dropdown %}dropdown{% endif %}">
             <a href="{{ link.url }}" {% if has_dropdown %}class="dropdown-toggle" data-hover="dropdown" data-delay="200" data-toggle="dropdown"{% endif %}>
               {{ link.title }}
-              {% if has_dropdown %}<b class="caret"></b>{% endif %}
             </a>
             {% if has_dropdown %}
               <ul class="dropdown-menu" role="menu">
@@ -68,7 +66,7 @@
                       </li>
                   {% endif %}
               {% endif %}
-              <li>
+              <li class="cart-link">
                   <a href="/cart"><i class="fa fa-shopping-cart"></i> Cart ({{ cart.item_count }})</a>
               </li>
           </ul>
