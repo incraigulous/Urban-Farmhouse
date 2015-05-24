@@ -11828,3 +11828,106 @@ if (typeof jQuery === 'undefined') {
         $('[data-hover="dropdown"]').dropdownHover();
     });
 })(jQuery, window);
+
+/*
+ *  jquery-loading - v1.0.3
+ *  Easily add and manipulate loading states of any element on the page
+ *  http://github.com/CarlosBonetti/jquery-loading
+ *
+ *  Made by Carlos Bonetti
+ *  Under MIT License
+ */
+!function(a,b,c){var d=function(b,c){this.element=b,this.settings=a.extend({},d.defaults,c),this.settings.fullPage=this.element.is("body"),this.init(),this.settings.start&&this.start()};d.defaults={overlay:c,message:"Loading...",theme:"light",stoppable:!1,start:!0,onStart:function(a){a.overlay.fadeIn(150)},onStop:function(a){a.overlay.fadeOut(150)},onClick:function(){}},d.setDefaults=function(b){d.defaults=a.extend({},d.defaults,b)},a.extend(d.prototype,{init:function(){this.isActive=!1,this.overlay=this.settings.overlay||this.createOverlay(),this.resize(),this.attachMethodsToExternalEvents(),this.attachOptionsHandlers()},createOverlay:function(){var b=a('<div class="loading-overlay loading-theme-'+this.settings.theme+'"><div class="loading-overlay-content">'+this.settings.message+"</div></div>").hide().appendTo("body"),c=this.element.attr("id");return c&&b.attr("id",c+"_loading-overlay"),b},attachMethodsToExternalEvents:function(){var c=this;c.settings.stoppable&&c.overlay.on("click",function(){c.stop()}),c.overlay.on("click",function(){c.element.trigger("loading.click",c)}),a(b).on("resize",function(){c.resize()}),a(document).on("ready",function(){c.resize()})},attachOptionsHandlers:function(){var a=this;a.element.on("loading.start",function(b,c){a.settings.onStart(c)}),a.element.on("loading.stop",function(b,c){a.settings.onStop(c)}),a.element.on("loading.click",function(b,c){a.settings.onClick(c)})},resize:function(){var a=this,b=a.element,c=b.outerWidth(),d=b.outerHeight();this.settings.fullPage&&(d="100%",c="100%"),this.overlay.css({position:a.settings.fullPage?"fixed":"absolute",zIndex:9+a.settings.fullPage,top:b.offset().top,left:b.offset().left,width:c,height:d})},start:function(){this.isActive=!0,this.element.trigger("loading.start",this)},stop:function(){this.isActive=!1,this.element.trigger("loading.stop",this)},active:function(){return this.isActive},toggle:function(){this.active()?this.stop():this.start()}});var e="jquery-loading";a.fn.loading=function(b){var c=arguments.length>1?Array.prototype.slice.call(arguments,1):[];return this.each(function(){var f=a.data(this,e);f?"string"==typeof b?f[b].apply(f,c):f.start():a.data(this,e,f=new d(a(this),b))})},a.fn.Loading=function(){return a(this).data(e)},a.expr[":"].loading=function(b){var c=a.data(b,e);return c?c.active():!1},a.Loading=d}(jQuery,window);
+/*!
+ * Img preload v0.1
+ * https://github.com/zzarcon/walter.js
+ *
+ * Copyright (c) 2014 @zzarcon <hezarco@gmail.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Date: 2014-11-27
+ */
+
+(function(exports) {
+  var config = {
+    path: ''
+  };
+
+  function Walter(images, options) {
+    if (!images) {
+      return new Error('Walter requires a image or array of images');
+    }
+
+    images = typeof images === 'string' ? [images] : images;
+
+    var promises = images.map(function(img) {
+      return preloadImage(img);
+    });
+
+    return all(promises);
+  }
+
+  function preloadImage(url) {
+    return new Promise(function(resolve, reject) {
+      var img = new Image();
+      img.src = [config.path, url].join('/');
+
+      img.onerror = reject;
+      img.onload = function() {
+        resolve(img);
+      };
+    });
+  }
+
+  function all(promises) {
+    var promisesToResolve = promises.length;
+    var resolvedPromises = 0;
+    var progressHandler = function() {};
+
+    var promise = new Promise(function(resolve, reject) {
+      var images = [];
+
+      function onFulfillement(img) {
+        progressHandler(images.length, img);
+        images.push(img);
+        resolvedPromises++;
+        resolvedPromises === promisesToResolve && resolve(images);
+      }
+
+      promises.forEach(function(promise) {
+        promise.then(onFulfillement).catch(function() {
+          reject(promise);
+        });
+      });
+    });
+
+    promise.progress = function(callback) {
+      progressHandler = callback;
+    };
+
+    return promise;
+  }
+
+  Walter.config = function(userConfig) {
+    config = userConfig;
+  };
+
+  exports.Walter = Walter;
+})(window);

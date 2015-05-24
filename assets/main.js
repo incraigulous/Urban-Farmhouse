@@ -9,6 +9,10 @@ function process_content(item) {
     });
 
     $(item).find('.slider').each(function(index, el) {
+        $(el).on('init', function(event, slick, direction){
+            $(el).fadeIn();
+        });
+
         $(el).slick({
             dots: true,
             infinite: true,
@@ -18,7 +22,6 @@ function process_content(item) {
             autoplay: true,
             autoplaySpeed: 7000
         });
-
     });
 }
 

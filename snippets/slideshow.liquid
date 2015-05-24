@@ -18,22 +18,31 @@
         {% capture setting_description %}slideshow_description_{{i}}{% endcapture %}
 
         {% if settings[setting_show] %}
-            <div style="background: url('{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}') no-repeat;">
-                <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden;"/>
+            <div style="background: url('{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}') no-repeat center center;" class="slide">
+                <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden;"/>
                 {% if settings[setting_title] or settings[setting_description] %}
-                    <div class="caption">
-                        {% if settings[setting_title] %}<h4>{{ settings[setting_title] }}</h4>{% endif %}
-                        {% if settings[setting_description] %}<p>{{ settings[setting_description] }}</p>{% endif %}
-                        {% unless settings[setting_url] == '' %}<a href="{{ settings[setting_url] }}" class="btn btn-default">{% endunless %}
-                            {% if settings[setting_button_text] != '' %}
-                                {{ settings[setting_button_text] }}
-                            {% else %}
-                                Read more
+                    <div class="container-absolute">
+                        <div class="caption">
+                            {% if settings[setting_title] %}
+                                <h4>{{ settings[setting_title] }}</h4>
                             {% endif %}
-                            {% unless settings[setting_url] == '' %}</a>{% endunless %}
+                            {% if settings[setting_description] %}
+                                <div class="description">{{ settings[setting_description] }}</div>
+                            {% endif %}
+                            {% unless settings[setting_url] == '' %}
+                            <div class="text-center">
+                                <a href="{{ settings[setting_url] }}" class="btn btn-default">
+                                {% if settings[setting_button_text] != '' %}
+                                    {{ settings[setting_button_text] }}
+                                {% else %}
+                                    Read more
+                                {% endif %}
+                                </a>
+                            </div>
+                            {% endunless %}
+                        </div>
                     </div>
                 {% endif %}
-
             </div>
         {% endif %}
     {% endfor %}

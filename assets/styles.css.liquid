@@ -15,6 +15,39 @@ footer.footer {
     position: relative;
 }
 
+.container-absolute {
+    position: absolute;
+    width: 960px;
+    left: 50%;
+    transform: translate(-50%,0);
+    top: 0px;
+}
+
+/* BUTTONS */
+.btn {
+    text-transform: uppercase;
+    padding: 15px 35px;
+}
+
+.btn-default,
+.btn-default:hover,
+a.btn-default,
+a:link.btn-default,
+a:hover.btn-default,
+a:active.btn-default,
+a:visited.btn-default {
+    color: white;
+    background-color: #353535;
+}
+
+.btn-default:hover,
+.btn-default:active,
+a:hover.btn-default,
+a:active.btn-default {
+    background-color: #4F4F4F;
+}
+
+
 /* FONTS */
 
 html .fa {
@@ -250,11 +283,82 @@ nav input[type="search"] {
     font-weight: bold;
 }
 
-.carousel video {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
+/* SLIDESHOW */
+.slider {
+    display: none;
+    overflow: hidden;
 }
+
+.slider .slide {
+    position: relative;
+    background-size: auto 100% !important;
+}
+
+@media (min-width: 1200px) {
+    .slider .slide {
+        background-size: 100% auto !important;
+    }
+}
+
+.slider .caption {
+    width: 300px;
+    background-color: rgba(245, 244, 240, .9);
+    padding: 30px;
+    float: right;
+    margin: 40px 75px;
+}
+
+.slider .caption h4 {
+    font-size: 2em;
+}
+
+.slider .caption .description {
+    margin: 22px 0 32px
+}
+
+.slider ul.slick-dots {
+    bottom: 25px;
+}
+
+.slider ul.slick-dots li button {
+
+    text-indent: -9999px;
+    border-radius: 5px;
+    border: solid 2px #cecbcc;
+}
+
+.slider ul.slick-dots li:hover button,
+.slider ul.slick-dots li.slick-active button {
+    background-color: #b2b1b2;
+}
+
+.slider .slick-next,
+.slider .slick-prev {
+    height: 30px;
+    bottom: 30px;
+    top: auto;
+    z-index: 200;
+}
+
+.slider .slick-prev {
+    left: 15px;
+}
+
+.slider .slick-next {
+    right: 15px;
+}
+
+.slider .slick-prev:before  {
+    font-family: 'FontAwesome';
+    content: "\f053";
+    font-size: 30px;
+}
+
+.slider .slick-next:before {
+     font-family: 'FontAwesome';
+     content: "\f054";
+    font-size: 30px;
+ }
 
 .blog-view .wrapper {
     position:relative;
