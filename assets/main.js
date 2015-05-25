@@ -27,5 +27,9 @@ function process_content(item) {
 }
 
 $(document).ready(function() {
+    $('a[data-hover="dropdown"]').click(function(){
+        location.href = this.href;
+    });
+
     process_content($('body'));
 });

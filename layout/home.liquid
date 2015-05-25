@@ -53,10 +53,23 @@
   <!-- Navbar -->
   {% include 'navbar' %}
 
+  <!-- Slideshow, if we'd like it full width. -->
+  {% if settings.slideshow_position == "full" and template == "index" %}
+      {% include 'slideshow' %}
+  {% endif %}
+
   <!-- Content -->
   <section id="content" class="container">
+    <!-- Slideshow, if we'd like it within the page container. -->
+    {% if settings.slideshow_position == "top" and template == "index" %}
+        {% include 'slideshow' %}
+    {% endif %}
     <div class="row">
       <div class="{{ sidebar_class_content }}">
+        <!-- Slideshow, if we'd like it within the content container. -->
+        {% if settings.slideshow_position == "content" and template == "index" %}
+            {% include 'slideshow' %}
+        {% endif %}
         <!--
           Shopify doesn't let us override list-collections.liquid directly.
           Instead, we have to use this hack to customise our /collections and /products pages.

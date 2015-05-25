@@ -1,24 +1,30 @@
-{% if collections.size != 0 %}
-    {% for collection in collections %}
+<!-- Display linklist selected in theme settings. -->
+{% unless linklists[settings.navbar_linklist] == empty %}
+    {% for link in linklists[settings.home_collections_linklist].links %}
+        {% assign collection = link.object %}
+
         {% capture iteration %}{% cycle '1', '2', '3' %}{% endcapture %}
         {% if iteration == '1' %}
-            <div class="row">
+            <div class="row collections">
         {% endif %}
 
-                <div class="col-md-4">
-                    <a href="{{ collection.url }}" title="{{ collection.title | escape }}" class="thumbnail">
-                        {% if collection.image %}
-                            <img src="{{ collection.image | collection_img_url: 'medium' }}" alt="{{ collection.title | escape }}" />
-                        {% else %}
-                            <img src="{{ collection.products.first.featured_image | product_img_url: 'medium' }}" alt="{{ collection.title | escape }}" />
-                        {% endif %}
-                    </a>
-
-                    <h5>{{ collection.title | escape }} <small>{{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'item', 'items' }}</small></h5>
-                </div>
+        <div class="col-md-4 collection">
+            <div>
+                <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
+                    {% if collection.image %}
+                        <img src="{{ collection.image | collection_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive"/>
+                    {% else %}
+                        <img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive"/>
+                    {% endif %}
+                    <h5>{{ collection.title | escape }}</h5>
+                    <span class="hover-mask">
+                    </span>
+                </a>
+            </div>
+        </div>
 
         {% if iteration == '3' or forloop.last %}
             </div>
         {% endif %}
     {% endfor %}
-{% endif %}
+{% endunless %}

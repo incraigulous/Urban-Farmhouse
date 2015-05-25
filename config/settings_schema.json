@@ -426,6 +426,15 @@
     "settings": [
       {
         "type": "header",
+        "content": "Home Page"
+      },
+      {
+        "type": "link_list",
+        "id": "home_collections_linklist",
+        "label": "Home page collection link list"
+      },
+      {
+        "type": "header",
         "content": "Collection Pages"
       },
       {
