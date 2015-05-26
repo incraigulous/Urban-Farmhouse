@@ -7,7 +7,7 @@
 
     {% if src != blank %}
         <div>
-            <a href="pages/{{ blog }}?article={{ article.id }}" style="background-image:url('{{ src }}');">{{ article.title | escape }}</a>
+            <a href="pages/{{ blog }}"><img src="{{ src }}" class="img-responsive"></a>
         </div>
         {% break %}
     {% endif %}

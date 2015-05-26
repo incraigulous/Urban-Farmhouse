@@ -1,14 +1,15 @@
-<!-- Display linklist selected in theme settings. -->
-{% unless linklists[settings.navbar_linklist] == empty %}
+<article>
+    <!-- Display linklist selected in theme settings. -->
+    {% unless linklists[settings.navbar_linklist] == empty %}
     {% for link in linklists[settings.home_collections_linklist].links %}
         {% assign collection = link.object %}
 
         {% capture iteration %}{% cycle '1', '2', '3' %}{% endcapture %}
         {% if iteration == '1' %}
-            <div class="row collections">
+            <div class="row collections half-gutter">
         {% endif %}
 
-        <div class="col-md-4 collection">
+        <div class="col-md-4 col collection">
             <div>
                 <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
                     {% if collection.image %}
@@ -25,4 +26,6 @@
             </div>
         {% endif %}
     {% endfor %}
-{% endunless %}
+    {% endunless %}
+</article>
+
