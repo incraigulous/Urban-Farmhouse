@@ -23,7 +23,13 @@ function process_content(item) {
             var caption = $(el).find('.caption');
             caption.animate({
                     'margin-top': 40
-                }, 800, "swing");
+                }, 1000, "linear")
+                .animate({
+                    'margin-top': 33
+                }, 100, "linear")
+                .animate({
+                        'margin-top': 40
+                }, 100, "linear");
         };
 
         $(el).on('init', function(event, slick, direction){
