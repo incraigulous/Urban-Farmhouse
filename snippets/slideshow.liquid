@@ -19,12 +19,11 @@
         {% if settings[setting_show] %}
             {% if forloop.index == 1 %}
                 <div class="preloader" id="slider-preloader">
-                    <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden;"/>
+                    <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden; height:auto;"/>
                 </div>
                 <div class="slider">
             {% endif %}
             <div style="background: url('{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}') no-repeat center center;" class="slide">
-                <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden;"/>
                 {% if settings[setting_title] or settings[setting_description] %}
                     <div class="container-absolute">
                         <div class="caption">

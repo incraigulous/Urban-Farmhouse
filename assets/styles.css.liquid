@@ -352,14 +352,32 @@ nav input[type="search"] {
     overflow: hidden;
 }
 
+.slick-slider > div {
+    max-height: 450px !important;
+}
+
 .slider .slide {
     position: relative;
-    background-size: auto 100% !important;
+    background-size: cover !important;
+}
+
+.slider .slick-track,
+.slider .slick-slide {
+    max-height: 450px !important;
+}
+
+.slide:before {
+    content: "";
+    display: block;
+    padding: 25%;
+    box-sizing: border-box;
+    max-height: 1119px;
 }
 
 @media (min-width: 1200px) {
     .slider .slide {
-        background-size: 100% auto !important;
+        position: relative;
+        background-position: top;
     }
 }
 
@@ -510,7 +528,6 @@ nav input[type="search"] {
     cursor: pointer;
     height: 174px;
     overflow: hidden;
-    transition: all .2s ease-in-out;
 }
 
 .home-gallery-thumbnail > div {
