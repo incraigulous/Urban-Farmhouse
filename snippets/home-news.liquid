@@ -1,16 +1,21 @@
-<h2>Latest News & Trends</h2>
-{% for article in blogs['news'].articles limit: 2 %}
-    <div>
+<h3 class="center-underlined">News & Trends</h3>
+<div class="news">
+    {% for article in blogs['news'].articles %}
         {% assign src = '' %}
         {% if article.content contains "<img" %}
             {% assign src = article.content | split: 'src="' %}
             {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+            {% if src %}
+                <img src="{{ src }}" class="img-responsive">
+                <h4><i class="fa fa-newspaper-o"></i> {{ article.title }}</h4>
+                <div>
+                    {{ article.content | strip_html | truncatewords: 100}} <a href="pages/news?article={{ article.id }}"> READ MORE</a>
+                </div>
+                {% break %}
+            {% endif %}
          {% endif %}
-        {{ article.title }}
-        <img src="{{ src }}" class="img-responsive">
-        <div>
-            {{ article.content | strip_html | truncatewords: 20}} <a href="pages/news?article={{ article.id }}"> READ MORE</a>
-        </div>
-        <a class="btn btn-default" href="pages/news?article={{ article.id }}">READ MORE</a>
+    {% endfor %}
+    <div class="text-center">
+        <a class="btn btn-default" href="pages/news">READ MORE</a>
     </div>
-{% endfor %}
+</div>

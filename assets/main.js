@@ -21,15 +21,18 @@ function process_content(item) {
 
         function showCaptionBox() {
             var caption = $(el).find('.caption');
-            caption.animate({
+            if (!caption.hasClass('shown')) {
+                caption.animate({
                     'margin-top': 40
                 }, 1000, "linear")
-                .animate({
-                    'margin-top': 33
-                }, 100, "linear")
-                .animate({
+                    .animate({
+                        'margin-top': 33
+                    }, 100, "linear")
+                    .animate({
                         'margin-top': 40
-                }, 100, "linear");
+                    }, 100, "linear");
+                caption.addClass('shown');
+            }
         };
 
         $(el).on('init', function(event, slick, direction){

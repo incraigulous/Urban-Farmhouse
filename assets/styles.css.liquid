@@ -2,7 +2,7 @@
 html,
 body {
     background: #f5f4f0 url({{ 'background.png' | asset_url }}) bottom repeat-x;
-    color: #716f6c;
+    color: #5d5a4b;
 }
 
 nav,
@@ -90,6 +90,12 @@ a:active.btn-default {
     background-color: #484848;
 }
 
+.center-underlined {
+    text-align: center;
+    border-bottom: solid 1px #dbdbda;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
 
 /* FONTS */
 
@@ -109,6 +115,14 @@ a:visited {
 
 a:hover {
     text-decoration: underline;
+}
+
+h1, h2, h3, h5 {
+    text-transform: uppercase;
+}
+
+h4 .fa {
+    margin-right: 10px;
 }
 
 /* FORMS */
@@ -573,6 +587,25 @@ nav input[type="search"] {
     font-size: 1.4em;
 }
 
+/* CUSTOMERS */
+.customers .customer {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.customers .customer h5 {
+    margin-top: 1px;
+}
+
+/* NEWS */
+.news h4 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.news .btn {
+    margin-top: 40px;
+}
 
 /* BLOG VIEW */
 
