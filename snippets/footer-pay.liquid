@@ -8,6 +8,6 @@
 {% for setting in settings %}
   {% if setting[0] contains 'pay_' and setting[1] %}
     {% capture payment_title %}We accept {{ setting[0] | replace: 'pay_', '' | capitalize }}{% endcapture %}
-    <li><span class="sprite sprite-pay {{ setting[0] }}" title="{{ payment_title }}"></span></li>
+      <li><i class="fa fa-{{ setting[0] | replace: 'pay_', '' }}"></i></li>
   {% endif %}
 {% endfor %}

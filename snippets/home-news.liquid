@@ -9,7 +9,7 @@
                 <img src="{{ src }}" class="img-responsive">
                 <h4><i class="fa fa-newspaper-o"></i> {{ article.title }}</h4>
                 <div>
-                    {{ article.content | strip_html | truncatewords: 100}} <a href="pages/news?article={{ article.id }}"> READ MORE</a>
+                    {{ article.content | strip_html | truncatewords: 100}} <a href="pages/news?article={{ article.id }}" class="read-more">READ MORE</a>
                 </div>
                 {% break %}
             {% endif %}

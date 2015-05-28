@@ -4,29 +4,38 @@
 
 {% endcomment %}
 <footer class="footer">
-  <div class="container">
+
+    <div class="footer-nav">
+        <div class="container">
+            <!-- Footer Links -->
+            <ul class="footer-links">
+                {% for link in linklists.footer.links %}
+                    <li>
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                    {% unless forloop.last %}
+                    <li class="muted">
+                        &middot;
+                    </li>
+                    {% endunless %}
+                {% endfor %}
+            </ul>
+         </div>
+    </div>
 
     <!-- Payment Methods -->
-    <ul class="footer-links">
+    <ul class="footer-links payment-methods">
       {% include 'footer-pay' %}
     </ul>
 
-    <!-- Footer Links -->
-    <ul class="footer-links">
-      {% for link in linklists.footer.links %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% unless forloop.last %}
-        <li class="muted">&middot;</li>
-        {% endunless %}
-      {% endfor %}
-    </ul>
-
-    <!-- Required Shopify Link & Logout Link -->
-    <small>
-      {{ powered_by_link }}
-      &middot; Theme based on <a href="http://bootstrapforshopify.com">Bootstrap for Shopify</a>
-      {% if customer %}&middot; Logged in as <strong>{{ customer.name }}</strong> ({{ 'Logout' | customer_logout_link }}){% endif %}
+    <small class="legal">
+        © {{ 'now' | date: '%Y' }} URBAN FARMHOUSE DESIGNS
     </small>
 
-  </div>
+    <!-- Required Shopify Link & Logout Link -->
+    <small class="logout">
+      {% if customer %}
+          Logged in as <strong>{{ customer.name }}</strong> ({{ 'Logout' | customer_logout_link }})
+      {% endif %}
+    </small>
 </footer>

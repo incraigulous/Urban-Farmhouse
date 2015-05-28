@@ -66,6 +66,7 @@ article {
     text-transform: uppercase;
     padding: 15px 35px;
     transition: all 0.3s ease;
+    padding: 13px 35px;
 }
 
 a {
@@ -88,6 +89,16 @@ a:visited.btn-default {
 a:hover.btn-default,
 a:active.btn-default {
     background-color: #484848;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    background-color: #484848;
+    color: white;
 }
 
 .center-underlined {
@@ -126,6 +137,10 @@ h4 .fa {
 }
 
 /* FORMS */
+.form-group {
+    margin-bottom: 7px;
+}
+
 .form-control {
     padding: 6px 12px;
 }
@@ -139,6 +154,21 @@ input[type="search"] {
 
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: searchfield-cancel-button;
+}
+
+label {
+    font-weight: normal;
+}
+
+.form-control::-webkit-input-placeholder,
+.form-control:-moz-placeholder,
+.form-control::-moz-placeholder,
+.form-control:-ms-input-placeholder {
+    color: #cfcecb;
+}
+
+.checkbox {
+    padding-left: 14px;
 }
 
 /* ALERTS */
@@ -605,6 +635,86 @@ nav input[type="search"] {
 
 .news .btn {
     margin-top: 40px;
+}
+
+.news .read-more {
+    font-weight: bold;
+}
+
+/* CONNECT */
+#mc_embed_signup {
+    margin-bottom: 15px;
+}
+
+#mc_embed_signup input.mce_inline_error {
+    background-color: rgb(255, 253, 234);
+    border-color: red !important;
+    border: solid 1px red;
+}
+
+#mc_embed_signup .error,
+#mc_embed_signup .success {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+#mc_embed_signup .error {
+    color: red;
+}
+
+#mc_embed_signup .newsletter-label {
+    margin-left: 7px;
+}
+
+/* MAP */
+.map-container {
+    margin-bottom: 15px;
+    width: 100%;
+    overflow: hidden;
+    height: 125px;
+}
+
+.directions-link {
+    float: right;
+}
+
+/* STORE HOURS */
+.store-hours .center-underlined {
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer.footer {
+    margin-top: 0px;
+    border-top: 0px;
+}
+
+.footer-nav {
+    padding: 9px 0;
+    background-color: #353535;
+}
+
+.footer-nav a,
+.footer-nav a:link,
+.footer-nav a:hover,
+.footer-nav a:active,
+.footer-nav a:visited {
+    color: white;
+}
+
+.footer-nav li {
+    padding: 0px 21px;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+footer .payment-methods {
+    font-size: 2.1em;
+    margin: 25px 0 15px;
+}
+
+footer .payment-methods .fa {
+    margin: 0px;
 }
 
 /* BLOG VIEW */

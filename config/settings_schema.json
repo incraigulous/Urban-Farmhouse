@@ -472,13 +472,8 @@
       },
       {
         "type": "checkbox",
-        "id": "pay_amex",
+        "id": "pay_cc-amex",
         "label": "AMEX"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_laser",
-        "label": "Laser"
       },
       {
         "type": "checkbox",
@@ -487,27 +482,12 @@
       },
       {
         "type": "checkbox",
-        "id": "pay_maestro",
-        "label": "Maestro"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_dankort",
-        "label": "Dankort"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_mastercard",
+        "id": "pay_cc-mastercard",
         "label": "Mastercard"
       },
       {
         "type": "checkbox",
-        "id": "pay_diners",
-        "label": "Diners"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_paypal",
+        "id": "pay_cc-paypal",
         "label": "Paypal"
       },
       {
@@ -517,33 +497,13 @@
       },
       {
         "type": "checkbox",
-        "id": "pay_shopify",
-        "label": "Shopify"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_forbru",
-        "label": "Forbru"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_solo",
-        "label": "Solo"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_google",
+        "id": "pay_google-wallet",
         "label": "Google"
       },
       {
         "type": "checkbox",
-        "id": "pay_visa",
+        "id": "pay_cc-visa",
         "label": "Visa"
-      },
-      {
-        "type": "checkbox",
-        "id": "pay_jcb",
-        "label": "JCB"
       }
     ]
   }
