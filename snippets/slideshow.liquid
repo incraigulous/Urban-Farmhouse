@@ -17,17 +17,21 @@
         {% capture setting_description %}slideshow_description_{{i}}{% endcapture %}
 
         {% if settings[setting_show] %}
+            {% assign slideshow_image = 'slideshow-image-' | append:i | append:'.jpg' | asset_url %}
             {% if forloop.index == 1 %}
                 <div class="preloader" id="slider-preloader">
-                    <img src="{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden; height:auto;"/>
+                    <img src="{{ slideshow_image }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden; height:auto;"/>
                 </div>
                 <div class="slider">
             {% endif %}
-            <div style="background: url('{{ 'slideshow-image-' | append:i | append:'.jpg' | asset_url }}') no-repeat center center;" class="slide">
+            <div style="background: url('{{ slideshow_image }}') no-repeat center center;" class="slide">
                 {% if settings[setting_title] or settings[setting_description] %}
                     <div class="container-absolute">
                         <div class="caption">
                             {% if settings[setting_title] %}
+                                {% assign social_title = settings[setting_title] %}
+                                {% assign social_media = 'https:' | append:slideshow_image | url_param_escape %}
+                                {% include 'social-widget' with 'pinterest' %}
                                 <h4>{{ settings[setting_title] }}</h4>
                             {% endif %}
                             {% if settings[setting_description] %}

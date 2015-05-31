@@ -10,13 +10,32 @@
    - http://docs.shopify.com/manual/configuration/store-customization/social-media-button
 
 {% endcomment %}
+{% unless social_url %}
+    {% assign social_url = {{ shop.url }}{{ product.url }} %}
+{% endunless %}
+{% unless social_text %}
+    {% assign social_text = {{ product.title | escape }} by {{ product.vendor | escape }} %}
+{% endunless %}
+{% unless social_title %}
+    {% if social-widget == 'pinterest' %}
+        {% assign social_title = {{ product.title | escape | replace:' ','%20' }} %}
+    {% else %}
+        {% assign social_title = {{ product.title | escape }} by {{ product.vendor | escape }} %}
+    {% endif %}
+{% endunless %}
+{% unless social_media %}
+    {% assign social_media = {{ product.featured_image | product_img_url: 'compact' | split:'?' | first  }} %}
+{% endunless %}
+
 {% if social-widget == 'twitter' %}
-<!-- See: http://wiki.shopify.com/Adding_a_Tweet_Button_to_your_Content -->
-<a href="http://twitter.com/share" data-url="{{ shop.url }}{{ product.url }}" data-text="{{ product.title | escape }} by {{ product.vendor | escape }}" class="twitter-share-button" data-count="horizontal" data-via="{% if settings.social_url_twitter %}{{ settings.social_url_twitter }}{% endif %}">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    <!-- See: http://wiki.shopify.com/Adding_a_Tweet_Button_to_your_Content -->
+    <a href="http://twitter.com/share" data-url="{{ social_url }}" data-text="{{ social_title }}" class="twitter-share-button" data-count="horizontal" data-via="{% if settings.social_url_twitter %}{{ settings.social_url_twitter }}{% endif %}">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 {% endif %}
 {% if social-widget == 'facebook' %}
-<iframe src="//www.facebook.com/plugins/like.php?href={{ shop.url }}{{ product.url }}&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;colorscheme=light&amp;action=like&amp;height=20" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 110px; height: 20px"></iframe>
+    <iframe src="//www.facebook.com/plugins/like.php?href={{ social_url }}&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=false&amp;colorscheme=light&amp;action=like&amp;height=20" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 110px; height: 20px"></iframe>
 {% endif %}
 {% if social-widget == 'pinterest' %}
-<a href="http://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&amp;media={{ product.featured_image | product_img_url: 'compact' | split:'?' | first  }}&amp;description={{ product.title | escape | replace:' ','%20' }}" class="pin-it-button" count-layout="none">Pin It</a><script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+    <span class="pin-it">
+        <a href="//www.pinterest.com/pin/create/button/?media={{ social_media }}&amp;description={{ social_title }}" data-pin-do="buttonPin" data-pin-config="none" data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a>
+    </span>
 {% endif %}
