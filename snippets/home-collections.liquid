@@ -6,23 +6,25 @@
 
         {% capture iteration %}{% cycle '1', '2', '3' %}{% endcapture %}
         {% if iteration == '1' %}
-            <div class="row collections half-gutter">
+            <div class="mobile-container">
+                <div class="row collections half-gutter">
         {% endif %}
 
-        <div class="col-sm-4 col collection">
-            <div>
-                <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
-                    {% if collection.image %}
-                        <img src="{{ collection.image | collection_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive"/>
-                    {% else %}
-                        <img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive"/>
-                    {% endif %}
-                    <h5>{{ collection.title | escape }}</h5>
-                </a>
-            </div>
-        </div>
+                    <div class="col-sm-4 col collection">
+                        <div>
+                            <a href="{{ collection.url }}" title="{{ collection.title | escape }}">
+                                {% if collection.image %}
+                                    <img src="{{ collection.image | collection_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive" width="100%"/>
+                                {% else %}
+                                    <img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive" width="100%"/>
+                                {% endif %}
+                                <h5>{{ collection.title | escape }}</h5>
+                            </a>
+                        </div>
+                    </div>
 
         {% if iteration == '3' or forloop.last %}
+                </div>
             </div>
         {% endif %}
     {% endfor %}
