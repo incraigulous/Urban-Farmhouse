@@ -95,9 +95,9 @@ var BlogView = new Class({
                 self.showPostPreloader();
             }
         }).done(function(html) {
-            var image = $(html).find(self.options.postContainerSelector).find('img').first();
-            var video = $(html).find(self.options.postContainerSelector).find('iframe').first();
-            var html = $(html).find(self.options.postContainerSelector).html();
+            var html = $(html).find(self.options.postContainerSelector);
+            var image = html.find('.content').find('img').first();
+            var video = html.find('.content').find('iframe').first();
 
             self.container.find('.slick-track a').removeClass('active');
             anchor.addClass('active');
@@ -105,21 +105,22 @@ var BlogView = new Class({
             if (video.length) {
                 anchor.addClass('video');
                 $(this).html(video);
+                var clone = video.clone();
+                video.hide();
+                $(this).html('<div class="cover cheat-gutter embed-responsive embed-responsive-16by9">' + clone.prop('outerHTML') + '</div>');
             } else if (image.length) {
-                $(this).html(image);
+                image.addClass('img-responsive');
+                var clone = image.clone();
+                image.hide();
+                $(this).html('<div class="cover cheat-gutter">' + clone.prop('outerHTML') + '</div>');
             } else {
-                $(this).html(html);
+                $(this).html('<div class="body">' + html.html() + '</div>');
+                stButtons.locateElements();
                 self.removePostPreloader();
                 return;
             }
-            $(this).append(html);
-
-            if (video.length) {
-                $(this).find('iframe:eq(1)').hide();
-            } else if (image.length) {
-                $(this).find('img:eq(1)').hide();
-            }
-
+            $(this).append('<div class="body">' + html.html() + '</div>');
+            stButtons.locateElements();
             self.removePostPreloader();
         });
     },

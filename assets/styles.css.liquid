@@ -50,6 +50,25 @@ article {
     background: url({{ 'spinner.gif' | asset_url }}) no-repeat center center;
 }
 
+.placeholder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.placeholder:after {
+    content: "\f03e";
+    font-family: 'FontAwesome';
+    font-size: 3em;
+    position: absolute;
+    background-color: #353535;
+    color: rgb(87, 87, 87);
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .well-lg {
     border-radius: 0;
     padding: 48px 24px;
@@ -94,6 +113,26 @@ article {
     font-weight: bold;
 }
 
+.st {
+    width: 61px;
+    height: 25px;
+    background-size: 61px 25px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: block;
+}
+
+.st_facebook_custom {
+    background-image: url({{ 'share.png' | asset_url }})
+}
+
+.st_twitter_custom {
+    background-image: url({{ 'tweet.png' | asset_url }})
+}
+
+.st_pinterest_custom {
+    background-image: url({{ 'pin.png' | asset_url }})
+}
 
 /* OVERRIDES */
 @media (min-width: 768px) {
@@ -105,6 +144,11 @@ article {
     .row.half-gutter .col {
         padding-left: 7.5px;
         padding-right: 7.5px;
+    }
+
+    .cheat-gutter {
+        margin-left: -15px;
+        margin-right: 15px;
     }
 }
 
@@ -876,8 +920,28 @@ footer .payment-methods .fa {
     transition: all 0.3s ease-out;
 }
 
-.gallery .list .slide a.active .image:before {
+.gallery .list a:hover .image:before,
+.gallery .list a.active .image:before {
     display: none;
+}
+
+.gallery .list a.video:hover .image:after,
+.gallery .list a.active.video .image:after {
+    content: "\f144";
+    font-family: 'FontAwesome';
+    font-size: 3em;
+    position: absolute;
+    background-color: #353535;
+    color: #f5f4f0;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gallery .list a:hover .placeholder:after,
+.gallery .list a.active .placeholder:after {
+    color: rgb(126, 126, 126);
 }
 
 .gallery #post-preloader {
@@ -887,6 +951,7 @@ footer .payment-methods .fa {
 
 .gallery .slide .caption {
     text-align: center;
+    padding: 8px;
 }
 
 .gallery .slick-prev,
@@ -898,8 +963,17 @@ footer .payment-methods .fa {
 .gallery .slick-next:before {
     color: #353535;
     font-size: 20px;
+
 }
 
+.gallery #post .content {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 50px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 50px; /* Firefox */
+    column-gap: 50px;
+}
 
 /** TABLET **/
 @media (max-width: 960px) {

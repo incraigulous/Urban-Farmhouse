@@ -34,7 +34,11 @@
                             {% endif %}
                             <div class="slide">
                                 <a href="{{ article.url }}" article-id="{{ article.id }}">
-                                    <div class="image" style="background-image:url('{{ src }}');"></div>
+                                    <div class="image" style="background-image:url('{{ src }}');">
+                                        {% unless src %}
+                                            <div class="placeholder"></div>
+                                        {% endif %}
+                                     </div>
                                     <div class="caption">{{ article.title | escape }}</div>
                                 </a>
                             </div>

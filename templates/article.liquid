@@ -8,11 +8,28 @@
 
 <div id="post">
     <!-- Article title. -->
-    <h2>{{ article.title }}</h2>
+    <div class="info">
+        <h2>{{ article.title }}</h2>
 
-    <!-- Article byline and content. -->
-    <h3 class="lead text-muted">{{ article.published_at | date: "%d %B %Y" }} by {{ article.author }}</h3>
-    {{ article.content }}
+        <div class="share">
+            {% assign social_title = article.title %}
+            {% assign social_text = {{ article.content | strip_html | truncatewords: 100}} %}
+            {% if article.content contains "<img" %}
+                {% assign social_media = article.content | split: 'src="' %}
+                {% assign social_media = social_media[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+            {% endif %}
+            <ul class="list-inline">
+                <li>{% include 'social-widget' with 'facebook' %}</li>
+                <li>{% include 'social-widget' with 'twitter' %}</li>
+                <li>{% include 'social-widget' with 'pinterest' %}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        {{ article.content }}
+    </div>
+
 </div>
 
 <!-- Pager to previous and next articles in this blog. -->
