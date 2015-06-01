@@ -6,12 +6,21 @@
 
 <div class="container gallery">
     <!-- Include any custom content. -->
-    {{ page.content }}
+    {% if page.content %}
+        <article>
+            <div class="row">
+                <div class="col-sm-12">
+                        {{ page.content }}
+
+                </div>
+            </div>
+        </article>
+    {% endif %}
 
     <div class="row">
 
         <!-- Articles List -->
-        <div class="col-md-9">
+        <div class="col-sm-12">
 
             <div class="blog-view">
                 <div class="wrapper">
@@ -24,16 +33,17 @@
                                 {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
                             {% endif %}
                             <div class="slide">
-                                <a href="{{ article.url }}" article-id="{{ article.id }}" style="background-image:url('{{ src }}');">{{ article.title | escape }}</a>
+                                <a href="{{ article.url }}" article-id="{{ article.id }}">
+                                    <div class="image" style="background-image:url('{{ src }}');"></div>
+                                    <div class="caption">{{ article.title | escape }}</div>
+                                </a>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
             </div>
-
-            <div id="post">
-
-            </div>
+            <div class="preloader" id="post-preloader"></div>
+            <div id="post"></div>
         </div>
     </div>
 </div>

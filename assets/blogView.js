@@ -7,7 +7,8 @@ var BlogView = new Class({
         scrollSpeed: 'slow',
         fadeSpeed: 'slow',
         postContainerSelector: '#post',
-        preloaderSelector: '#slider-preloader'
+        preloaderSelector: '#slider-preloader',
+        postPreloaderSelector: '#post-preloader'
     },
     container: null,
     list: null,
@@ -26,7 +27,11 @@ var BlogView = new Class({
 
             $(el).find('a').click($.proxy(function(event) {
                 event.preventDefault();
-                this.loadPost($(event.target).attr('href'));
+                var href = $(event.target).attr('href');
+                if (!href) {
+                    var href = $(event.target).closest('a').attr('href');
+                }
+                this.loadPost(href);
             }, this));
         }, this));
 
@@ -36,33 +41,41 @@ var BlogView = new Class({
 
     initSlick: function () {
         this.list.on('init', $.proxy(function(event, slick, direction){
-            $(this.options.preloaderSelector).hide();
-            $(this.list).fadeIn(500);
-            $(this.options.postContainerSelector).fadeIn(500);
+            this.removePreloader();
         }, this));
 
         this.list.slick({
-            centerMode: true,
-            centerPadding: '60px',
-            slidesToShow: 3,
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 4,
             initialSlide: this.initialSlide,
             responsive: [
                 {
-                    breakpoint: 768,
+                    breakpoint: 1024,
                     settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 3
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                    }
+                },
+                {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
                     }
                 },
                 {
                     breakpoint: 480,
                     settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 1
+                        slidesToShow: 1,
+                        slidesToScroll: 1
                     }
                 }
             ]
@@ -73,7 +86,10 @@ var BlogView = new Class({
         var self = this;
         $.ajax({
             url: url,
-            context: $(this.options.postContainerSelector)
+            context: $(this.options.postContainerSelector),
+            beforeSend: function(xhr) {
+                self.showPostPreloader();
+            }
         }).done(function(html) {
             var image = $(html).find(self.options.postContainerSelector).find('img').first();
             var video = $(html).find(self.options.postContainerSelector).find('iframe').first();
@@ -85,6 +101,7 @@ var BlogView = new Class({
                 $(this).html(image);
             } else {
                 $(this).html(html);
+                self.removePostPreloader();
                 return;
             }
 
@@ -95,6 +112,8 @@ var BlogView = new Class({
             } else if (image.length) {
                 $(this).find('img:eq(1)').hide();
             }
+
+            self.removePostPreloader();
         });
     },
 
@@ -103,5 +122,20 @@ var BlogView = new Class({
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    },
+
+    removePreloader: function () {
+        $(this.options.preloaderSelector).hide();
+        $(this.list).fadeIn();
+    },
+
+    showPostPreloader: function () {
+        $(this.options.postContainerSelector).hide();
+        $(this.options.postPreloaderSelector).fadeIn();
+    },
+
+    removePostPreloader: function () {
+        $(this.options.postPreloaderSelector).hide();
+        $(this.options.postContainerSelector).fadeIn();
     }
 });

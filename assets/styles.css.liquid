@@ -568,13 +568,13 @@ label {
     right: 30px;
 }
 
-.home .slider .slick-prev:before  {
+.slick-prev:before  {
     font-family: 'FontAwesome';
     content: "\f053";
     font-size: 30px;
 }
 
-.home .slider .slick-next:before {
+.slick-next:before {
      font-family: 'FontAwesome';
      content: "\f054";
     font-size: 30px;
@@ -831,9 +831,8 @@ footer .payment-methods .fa {
 .blog-view .wrapper {
     position:relative;
     margin:0 auto;
-    overflow:hidden;
     padding:5px;
-    height: 148px;
+    height: 200px;
 }
 
 .gallery .list,
@@ -842,20 +841,44 @@ footer .payment-methods .fa {
 }
 
 .gallery .list .slide {
-
+    position: relative;
+    height: 185px;
 }
 
-.gallery .list .slide,
 .gallery .list .slide a {
-    width: 246px;
-    height: 148px;
+    height: 170px;
     display: block;
+    margin-bottom: 15px;
+    padding: 3%;
+    box-sizing: border-box;
 }
 
-.gallery .list .slide a {
+.gallery .list .slide .image {
     background-size: cover;
+    height: 148px;
     background-repeat: no-repeat;
 }
+
+.gallery #post-preloader {
+    min-height: 200px;
+    display: none;
+}
+
+.gallery .slide .caption {
+    text-align: center;
+}
+
+.gallery .slick-prev,
+.gallery .slick-next {
+    top: 45%;
+}
+
+.gallery .slick-prev:before,
+.gallery .slick-next:before {
+    color: #353535;
+    font-size: 20px;
+}
+
 
 /** TABLET **/
 @media (max-width: 960px) {
