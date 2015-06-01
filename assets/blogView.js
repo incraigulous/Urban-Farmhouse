@@ -19,24 +19,28 @@ var BlogView = new Class({
         this.list = $(this.container).find(this.options.listSelector);
 
         var initialPostUrl;
+        var initialPostAnchor;
         this.list.find('div').each($.proxy(function(index, el){
             if ((this.getParameter('article') == $(el).find('a').attr('article-id')) || (!initialPostUrl)) {
+                initialPostAnchor = $(el).find('a');
                 initialPostUrl = $(el).find('a').attr('href');
                 this.initialSlide = index;
             }
 
             $(el).find('a').click($.proxy(function(event) {
                 event.preventDefault();
-                var href = $(event.target).attr('href');
+                var anchor = $(event.target);
+                var href = anchor.attr('href');
                 if (!href) {
-                    var href = $(event.target).closest('a').attr('href');
+                    var anchor = anchor.closest('a');
+                    var href = anchor.attr('href');
                 }
-                this.loadPost(href);
+                this.loadPost(href, anchor);
             }, this));
         }, this));
 
         this.initSlick();
-        this.loadPost(initialPostUrl);
+        this.loadPost(initialPostUrl, initialPostAnchor);
     },
 
     initSlick: function () {
@@ -82,7 +86,7 @@ var BlogView = new Class({
         });
     },
 
-    loadPost: function (url) {
+    loadPost: function (url, anchor) {
         var self = this;
         $.ajax({
             url: url,
@@ -95,7 +99,11 @@ var BlogView = new Class({
             var video = $(html).find(self.options.postContainerSelector).find('iframe').first();
             var html = $(html).find(self.options.postContainerSelector).html();
 
+            self.container.find('.slick-track a').removeClass('active');
+            anchor.addClass('active');
+
             if (video.length) {
+                anchor.addClass('video');
                 $(this).html(video);
             } else if (image.length) {
                 $(this).html(image);
@@ -104,7 +112,6 @@ var BlogView = new Class({
                 self.removePostPreloader();
                 return;
             }
-
             $(this).append(html);
 
             if (video.length) {
