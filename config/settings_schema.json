@@ -175,25 +175,7 @@
       },
       {
         "type": "paragraph",
-        "content": "Pause on Hover"
-      },
-      {
-        "type": "checkbox",
-        "id": "slideshow_pause",
-        "label": "Pause Slideshow on mouse hover"
-      },
-      {
-        "type": "text",
-        "id": "slideshow_interval",
-        "label": "Interval"
-      },
-      {
-        "type": "paragraph",
-        "content": "Value is in ms (5000ms = 5 seconds)."
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide images will be resized automatically to fit the slideshow. Images have a maximum width of 1200px, and it's recommended to have all slide images the same height to avoid shifting page heights."
+        "content": "Slide images should be size "
       },
       {
         "type": "header",
@@ -211,8 +193,9 @@
       {
         "type": "image",
         "id": "slideshow-image-1.jpg",
-        "label": "Image",
-        "max-width": 1200
+        "label": "Image (1200px x 551px)",
+        "max-width": 1200,
+        "max-height": 551
       },
       {
         "type": "text",
@@ -260,8 +243,9 @@
       {
         "type": "image",
         "id": "slideshow-image-2.jpg",
-        "label": "Image",
-        "max-width": 1200
+        "label": "Image (1200px x 551px)",
+        "max-width": 1200,
+        "max-height": 551
       },
       {
         "type": "text",
@@ -299,8 +283,9 @@
       {
         "type": "image",
         "id": "slideshow-image-3.jpg",
-        "label": "Image",
-        "max-width": 1200
+        "label": "Image (1200px x 551px)",
+        "max-width": 1200,
+        "max-height": 551
       },
       {
         "type": "text",
@@ -338,8 +323,9 @@
       {
         "type": "image",
         "id": "slideshow-image-4.jpg",
-        "label": "Image",
-        "max-width": 1200
+        "label": "Image (1200px x 551px)",
+        "max-width": 1200,
+        "max-height": 551
       },
       {
         "type": "text",
@@ -377,8 +363,9 @@
       {
         "type": "image",
         "id": "slideshow-image-5.jpg",
-        "label": "Image",
-        "max-width": 1200
+        "label": "Image (1200px x 551px)",
+        "max-width": 1200,
+        "max-height": 551
       },
       {
         "type": "text",

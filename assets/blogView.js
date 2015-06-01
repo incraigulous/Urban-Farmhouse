@@ -6,7 +6,8 @@ var BlogView = new Class({
         listSelector: '.list',
         scrollSpeed: 'slow',
         fadeSpeed: 'slow',
-        postContainerSelector: '#post'
+        postContainerSelector: '#post',
+        preloaderSelector: '#slider-preloader'
     },
     container: null,
     list: null,
@@ -34,6 +35,12 @@ var BlogView = new Class({
     },
 
     initSlick: function () {
+        this.list.on('init', $.proxy(function(event, slick, direction){
+            $(this.options.preloaderSelector).hide();
+            $(this.list).fadeIn(500);
+            $(this.options.postContainerSelector).fadeIn(500);
+        }, this));
+
         this.list.slick({
             centerMode: true,
             centerPadding: '60px',
@@ -68,8 +75,26 @@ var BlogView = new Class({
             url: url,
             context: $(this.options.postContainerSelector)
         }).done(function(html) {
+            var image = $(html).find(self.options.postContainerSelector).find('img').first();
+            var video = $(html).find(self.options.postContainerSelector).find('iframe').first();
             var html = $(html).find(self.options.postContainerSelector).html();
-            $(this).html(html);
+
+            if (video.length) {
+                $(this).html(video);
+            } else if (image.length) {
+                $(this).html(image);
+            } else {
+                $(this).html(html);
+                return;
+            }
+
+            $(this).append(html);
+
+            if (video.length) {
+                $(this).find('iframe:eq(1)').hide();
+            } else if (image.length) {
+                $(this).find('img:eq(1)').hide();
+            }
         });
     },
 

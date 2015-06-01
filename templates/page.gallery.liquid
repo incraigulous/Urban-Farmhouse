@@ -2,7 +2,9 @@
   <h1>{{ page.title }}</h1>
 </header>
 
-<div class="container">
+{% include 'breadcrumbs' %}
+
+<div class="container gallery">
     <!-- Include any custom content. -->
     {{ page.content }}
 
@@ -13,14 +15,17 @@
 
             <div class="blog-view">
                 <div class="wrapper">
+                    <div class="preloader" id="slider-preloader"></div>
                     <div class="list">
                         {% for article in blogs[page.handle].articles limit: 50 %}
-                        {% assign src = '' %}
-                        {% if article.content contains "<img" %}
-                        {% assign src = article.content | split: 'src="' %}
-                        {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
-                        {% endif %}
-                        <div><a href="{{ article.url }}" article-id="{{ article.id }}" style="background-image:url('{{ src }}');">{{ article.title | escape }}</a></div>
+                            {% assign src = '' %}
+                            {% if article.content contains "<img" %}
+                                {% assign src = article.content | split: 'src="' %}
+                                {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+                            {% endif %}
+                            <div class="slide">
+                                <a href="{{ article.url }}" article-id="{{ article.id }}" style="background-image:url('{{ src }}');">{{ article.title | escape }}</a>
+                            </div>
                         {% endfor %}
                     </div>
                 </div>

@@ -1,0 +1,8 @@
+---
+:api_key: 86f738947512d8587d1a27c8c6163846
+:password: a6d2c9d00e0ab1bb73bb6667806ab014
+:store: urban-farmhouse-3.myshopify.com
+:theme_id: 
+:ignore_files:
+- node_modules
+- assets/vendor

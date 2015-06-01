@@ -17,6 +17,7 @@ gulp.task('default', function () {
     gulp.src([
         'assets/vendor.js',
         'assets/blogView.js',
+        'assets/nav.js',
         'assets/main.js'
     ])
         .pipe(concat('all.js'))

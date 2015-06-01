@@ -42,26 +42,12 @@ function process_content(item) {
             autoplaySpeed: 7000
         });
     });
+
+    $(item).find('.main-nav').each(function(index, el) {
+        new Nav(el);
+    });
 }
 
 $(document).ready(function() {
-    $('a[data-hover="dropdown"]').click(function(){
-        location.href = this.href;
-    });
-
-    $(".main-nav").on('affix.bs.affix', function(event) {
-        $('body').addClass('nav-affixed');
-    });
-
-    $(".main-nav").on('affixed-top.bs.affix', function(event) {
-        $('body').removeClass('nav-affixed');
-    });
-
-    $(".main-nav").affix({
-        offset: {
-            top: 140
-        }
-    });
-
     process_content($('body'));
 });
