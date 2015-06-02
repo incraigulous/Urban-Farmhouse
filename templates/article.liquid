@@ -9,14 +9,12 @@
 <div id="post">
     <!-- Article title. -->
     <div class="info">
-        <h2>{{ article.title }}</h2>
-
         <div class="share">
             {% assign social_title = article.title %}
             {% assign social_text = {{ article.content | strip_html | truncatewords: 100}} %}
             {% if article.content contains "<img" %}
-                {% assign social_media = article.content | split: 'src="' %}
-                {% assign social_media = social_media[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+            {% assign social_media = article.content | split: 'src="' %}
+            {% assign social_media = social_media[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
             {% endif %}
             <ul class="list-inline">
                 <li>{% include 'social-widget' with 'facebook' %}</li>
@@ -24,6 +22,7 @@
                 <li>{% include 'social-widget' with 'pinterest' %}</li>
             </ul>
         </div>
+        <h2>{{ article.title }}</h2>
     </div>
 
     <div class="content">

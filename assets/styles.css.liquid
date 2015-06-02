@@ -17,6 +17,10 @@ article {
     margin-bottom: 30px;
 }
 
+hr {
+    border-bottom: 2px solid #C0BFBB;
+}
+
 .container {
     position: relative;
 }
@@ -872,12 +876,6 @@ footer .payment-methods .fa {
 }
 
 /* GALLERY */
-.blog-view {
-    margin-left: -20px;
-    margin-right: 10px;
-
-}
-
 .blog-view .wrapper {
     position:relative;
     margin:0 auto;
@@ -887,6 +885,10 @@ footer .payment-methods .fa {
 .gallery .list,
 .gallery #post {
     display: none;
+}
+
+.gallery #post .body {
+    padding: 0 15px;
 }
 
 .gallery .list .slide {
@@ -966,13 +968,47 @@ footer .payment-methods .fa {
 
 }
 
-.gallery #post .content {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-    -webkit-column-gap: 50px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 50px; /* Firefox */
-    column-gap: 50px;
+@media (min-width: 768px) {
+    .gallery #post .content {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-gap: 50px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 50px; /* Firefox */
+        column-gap: 50px;
+    }
+
+    .blog-view {
+        margin-left: -20px;
+        margin-right: 10px;
+    }
+}
+
+
+.gallery #post .image .cover img {
+    margin: 0 auto;
+}
+
+.gallery #post h2 {
+    text-transform: capitalize;
+    font-weight: 100;
+    font-size: 2.5em;
+}
+
+.gallery #post .share {
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: 10px;
+}
+
+.gallery #post .cover-wrap.image {
+    background-size: cover;
+    background-repeat: none;
+}
+
+.gallery #post .image .cover {
+    background-color: rgba(53, 53, 53, .8);
 }
 
 /** TABLET **/
@@ -1098,6 +1134,10 @@ footer .payment-methods .fa {
     .home-gallery-thumbnail {
         overflow: hidden;
         margin-bottom: 15px;
+    }
+
+    .gallery #post .share {
+        float: none;
     }
 
     /** MOBILE CUSTOMERS **/

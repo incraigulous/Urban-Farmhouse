@@ -35,7 +35,7 @@
                             <div class="slide">
                                 <a href="{{ article.url }}" article-id="{{ article.id }}">
                                     <div class="image" style="background-image:url('{{ src }}');">
-                                        {% unless src %}
+                                        {% if src == blank %}
                                             <div class="placeholder"></div>
                                         {% endif %}
                                      </div>
@@ -46,6 +46,7 @@
                     </div>
                 </div>
             </div>
+            <hr class="visible-xs"/>
             <div class="preloader" id="post-preloader"></div>
             <div id="post"></div>
         </div>
