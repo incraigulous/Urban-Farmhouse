@@ -1,46 +1,66 @@
-<header class="page-header">
-  <h1>{{ collection.title }}</h1>
-</header>
+<div class="collection">
+    <header class="page-header">
+      <h1>{{ collection.title }}</h1>
+    </header>
 
-<!-- Display the collection description if one exists. -->
-{% unless collection.description == '' %}
-  <p class="lead">{{ collection.description }}</p>
-{% endunless %}
+    {% include 'breadcrumbs' %}
 
-<div class="row">
+    <!-- Display the collection description if one exists. -->
+    {% unless collection.description == '' %}
+        <article class="description">
+            {{ collection.description }}
+            <div class="clearfix"></div>
+        </article>
+    {% endunless %}
 
-  <!-- Products -->
-  <div class="col-md-9">
-    {% paginate collection.products by 12 %}
-
-    {% if collection.products.size == 0 %}
-      <div class="panel panel-default">
-        <div class="panel-body">
-          No products found in this collection.
-        </div>
-      </div>
-    {% else %}
-      <!-- Include product list in groups of 3. -->
-      {% for product in collection.products %}
-        {% include 'product-list' with '3' %}
-      {% endfor %}
-
-      <div class="text-center">
-        {% include 'pagination' with 'product' %}
-      </div>
+    <!-- Sub Collections -->
+    {% assign has_subs = false %}
+    {% if linklists[collection.handle] and linklists[collection.handle].links.size > 0 %}
+        {% assign has_subs = true %}
     {% endif %}
 
-    {% endpaginate %}
-  </div>
+    {%  if has_subs %}
+        <article class="sub-collections">
+            {% for sub in linklists[collection.handle].links %}
+                <h1><a href="{{ sub.url }}">{{ sub.title }}</a></h1>
+            {% endfor %}
+        </article>
+    {% endif %}
 
-  <!-- Product Tags (Desktop & Tablet) -->
-  <div class="col-md-2 col-md-offset-1 hidden-xs text-right">
-    {% include 'tag-list' with collection %}
-  </div>
+    <div class="row">
+      <!-- Products -->
+      <div class="col-md-9">
+        {% paginate collection.products by 12 %}
 
-  <!-- Product Tags (Phone) -->
-  <div class="col-md-2 col-md-offset-1 visible-xs text-center">
-    {% include 'tag-list' with collection %}
-  </div>
+        {% if collection.products.size == 0 %}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              No products found in this collection.
+            </div>
+          </div>
+        {% else %}
+          <!-- Include product list in groups of 3. -->
+          {% for product in collection.products %}
+            {% include 'product-list' with '3' %}
+          {% endfor %}
 
+          <div class="text-center">
+            {% include 'pagination' with 'product' %}
+          </div>
+        {% endif %}
+
+        {% endpaginate %}
+      </div>
+
+      <!-- Product Tags (Desktop & Tablet) -->
+      <div class="col-md-2 col-md-offset-1 hidden-xs text-right">
+        {% include 'tag-list' with collection %}
+      </div>
+
+      <!-- Product Tags (Phone) -->
+      <div class="col-md-2 col-md-offset-1 visible-xs text-center">
+        {% include 'tag-list' with collection %}
+      </div>
+
+    </div>
 </div>

@@ -14,6 +14,7 @@
                 </div>
             </div>
         </article>
+        <hr class="visible-xs"/>
     {% endif %}
 
     <div class="row">
@@ -24,6 +25,7 @@
             <div class="blog-view">
                 <div class="wrapper">
                     <div class="preloader" id="slider-preloader"></div>
+                    <p class="visible-xs text-center"><b><i>Swipe to view more posts:</i></b></p>
                     <div class="list">
                         {% for article in blogs[page.handle].articles limit: 50 %}
                             {% assign src = '' %}

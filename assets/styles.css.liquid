@@ -554,6 +554,17 @@ label {
     }
 }
 
+.home .slider .slide .caption .st_pinterest_custom {
+    position: absolute;
+    bottom: -40px;
+    right: 0px;
+    display: none;
+}
+
+.home .slider .slide:hover .caption .st_pinterest_custom {
+    display: block;
+}
+
 .home #slider-preloader {
     margin-bottom: 30px;
 }
@@ -639,23 +650,22 @@ label {
     display: inline-block;
 }
 
-/* COLLECTIONS */
-.collections {
+/* HOME COLLECTIONS */
+.home .collections {
     margin-bottom: 20px;
 }
 
-.collection {
+.home .collection {
     position: relative;
     cursor: pointer;
     height: 195px;
 }
 
-.collection > div {
+.home .collection > div {
     overflow: hidden;
 }
 
-.collection h5 {
-    text-shadow: 2px 2px rgba(0,0,0,0.5);
+.home .collection h5 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -680,7 +690,7 @@ label {
     -webkit-box-sizing:border-box;
 }
 
-.collection img {
+.home .collection img {
     -webkit-transform: scale(1);
     transform: scale(1);
     opacity:1;
@@ -690,13 +700,13 @@ label {
 }
 
 @media (min-width: 768px) {
-    .collection:hover h5 {
+    .home .collection:hover h5 {
         color: #353535;
         border: solid 2px #353535;
         text-shadow: none;
     }
 
-    .collection:hover img {
+    .home .collection:hover img {
         -webkit-transform: scale(1.6);
         transform: scale(1.6);
         -webkit-transition:-webkit-transform 4s ease-in, opacity .3s ease-out;
@@ -718,7 +728,6 @@ label {
 }
 
 .home-gallery-thumbnail h5 {
-    text-shadow: 2px 2px rgba(0,0,0,0.5);
     position: absolute;
     left: 0;
     right: 0;
@@ -743,6 +752,7 @@ label {
     -webkit-box-sizing:border-box;
     z-index: 200;
     letter-spacing: 4px;
+    background-color: rgba(53, 53, 53, .5);
 }
 
 @media (min-width: 768px) {
@@ -1010,6 +1020,28 @@ footer .payment-methods .fa {
     background-color: rgba(53, 53, 53, .8);
 }
 
+/** COLLECTIONS **/
+
+.collection .description img[style*="float: left;"] {
+    margin-right: 55px;
+}
+
+.collection .description img[style*="float: right;"] {
+    margin-left: 55px;
+}
+
+.collection .description h1 {
+    font-size: 3em;
+    display: inline-block;
+}
+
+.collection .description h1,
+.collection .description h2,
+.collection .description h3 {
+    font-weight: 100;
+    text-transform: capitalize;
+}
+
 /** TABLET **/
 @media (max-width: 960px) {
     /** TABLET GALLERY STYLES **/
@@ -1118,13 +1150,13 @@ footer .payment-methods .fa {
     }
 
     /** MOBILE COLLECTIONS **/
-    .collection {
+    .home .collection {
         box-sizing: border-box;
         overflow: hidden;
         margin-bottom: 15px;
     }
 
-    .collections {
+    .home .collections {
         margin-bottom: 0px;
         max-width: 320px;
     }

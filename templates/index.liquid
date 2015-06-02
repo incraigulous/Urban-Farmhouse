@@ -21,27 +21,24 @@
             <div class="col-sm-12 mobile-ignore">
                 <div class="col-sm-12 mobile-ignore">
                     <div class="col-sm-4 home-gallery-thumbnail">
-                        <div>
-                            <h5><i class="fa fa-recycle"></i> Materials</h5>
-                            {% assign blog = 'materials' %}
-                            {% include 'home-gallery-thumbnail' with blog %}
-                        </div>
+                        {% assign blog = 'materials' %}
+                        {% assign blog_name = 'Materials' %}
+                        {% assign blog_icon = 'fa-recycle' %}
+                        {% include 'home-gallery-thumbnail' with blog %}
                     </div>
 
                     <div class="col-sm-4  home-gallery-thumbnail">
-                        <div>
-                            <h5><i class="fa fa-users"></i> Featured Designers</h5>
-                            {% assign blog = 'designers' %}
-                            {% include 'home-gallery-thumbnail' with blog %}
-                        </div>
+                        {% assign blog = 'designers' %}
+                        {% assign blog_name = 'Featured Designers' %}
+                        {% assign blog_icon = 'fa-users' %}
+                        {% include 'home-gallery-thumbnail' with blog %}
                     </div>
 
                     <div class="col-sm-4 home-gallery-thumbnail">
-                        <div>
-                            <h5><i class="fa fa-play-circle"></i> Media</h5>
-                            {% assign blog = 'media' %}
-                            {% include 'home-gallery-thumbnail' with blog %}
-                        </div>
+                        {% assign blog = 'media' %}
+                        {% assign blog_name = 'Media' %}
+                        {% assign blog_icon = 'fa-play-circle' %}
+                        {% include 'home-gallery-thumbnail' with blog %}
                     </div>
                 </div>
             </div>

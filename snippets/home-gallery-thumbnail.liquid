@@ -3,12 +3,20 @@
     {% if article.content contains "<img" %}
         {% assign src = article.content | split: 'src="' %}
         {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
-    {% endif %}
-
+        {% endif %}
     {% if src != blank %}
-        <div>
-            <a href="pages/{{ blog }}"><img src="{{ src }}" class="img-responsive" width="100%"></a>
-        </div>
         {% break %}
     {% endif %}
 {% endfor %}
+
+<div>
+    <a href="pages/{{ blog }}">
+        <h5><i class="fa {{ blog_icon }}"></i> {{ blog_name }}</h5>
+        <div>
+            {% if src != blank %}
+                <img src="{{ src }}" class="img-responsive" width="100%"></a>
+            {% endif %}
+        </div>
+    </a>
+</div>
+
