@@ -13,8 +13,8 @@
             {% assign social_title = article.title %}
             {% assign social_text = {{ article.content | strip_html | truncatewords: 100}} %}
             {% if article.content contains "<img" %}
-            {% assign social_media = article.content | split: 'src="' %}
-            {% assign social_media = social_media[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+                {% assign social_media = article.content | split: 'src="' %}
+                {% assign social_media = social_media[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
             {% endif %}
             <ul class="list-inline">
                 <li>{% include 'social-widget' with 'facebook' %}</li>
@@ -34,15 +34,15 @@
 <!-- Pager to previous and next articles in this blog. -->
 <ul class="pager">
   {% if blog.previous_article %}
-  <li class="previous"><a href="{{ blog.previous_article }}">&larr; Older</a></li>
+    <li class="previous"><a href="{{ blog.previous_article }}">&larr; Older</a></li>
   {% else %}
-  <li class="previous disabled"><a href="{{ article.url }}">&larr; Older</a></li>
+    <li class="previous disabled"><a href="{{ article.url }}">&larr; Older</a></li>
   {% endif %}
 
   {% if blog.next_article %}
-  <li class="next"><a href="{{ blog.next_article }}">Newer &rarr;</a></li>
+    <li class="next"><a href="{{ blog.next_article }}">Newer &rarr;</a></li>
   {% else %}
-  <li class="next disabled"><a href="{{ article.url }}">Newer &rarr;</a></li>
+    <li class="next disabled"><a href="{{ article.url }}">Newer &rarr;</a></li>
   {% endif %}
 </ul>
 

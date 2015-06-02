@@ -107,11 +107,17 @@ var BlogView = new Class({
                 $(this).html(video);
                 var clone = video.clone();
                 video.hide();
+                video.closest('p').hide();
+                if (image.length) {
+                    image.hide();
+                    image.closest('p').hide();
+                }
                 $(this).html('<div class="cover-wrap video"><div class="cover cheat-gutter embed-responsive embed-responsive-16by9">' + clone.prop('outerHTML') + '</div></div>');
             } else if (image.length) {
                 image.addClass('img-responsive');
                 var clone = image.clone();
                 image.hide();
+                image.closest('p').hide();
                 $(this).html("<div class='cover-wrap image cheat-gutter' style='background-image: url(" + image.attr("src") + ");'><div class='cover image'>" + clone.prop('outerHTML') + '</div></div>');
             } else {
                 $(this).html('<div class="body">' + html.html() + '</div>');

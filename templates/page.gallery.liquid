@@ -6,12 +6,11 @@
 
 <div class="container gallery">
     <!-- Include any custom content. -->
-    {% if page.content %}
+    {% if page.content != blank %}
         <article>
             <div class="row">
                 <div class="col-sm-12">
                         {{ page.content }}
-
                 </div>
             </div>
         </article>
