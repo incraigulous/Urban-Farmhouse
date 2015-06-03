@@ -14,42 +14,37 @@
     {% endunless %}
 
     <!-- Sub Collections -->
-    {% include 'sub-collections' with '3' %}
+    {% assign has_subs = false %}
+    {% if linklists[collection.handle] and linklists[collection.handle].links.size > 0 %}
+        {% assign has_subs = true %}
+        {% include 'sub-collections' with '3' %}
+    {% endif %}
 
-    <div class="row">
-      <!-- Products -->
-      <div class="col-md-9">
-        {% paginate collection.products by 12 %}
+    <article class="products">
+        <div class="row">
+          <!-- Products -->
+          <div class="col-md-12">
+            {% if collection.products.size == 0 %}
+                {% if has_subs == false %}
+                      <div class="panel panel-default">
+                        <div class="panel-body">
+                          No products found in this collection.
+                        </div>
+                      </div>
+                {% endif %}
+            {% else %}
+                {% paginate collection.products by 12 %}
+                      <!-- Include product list in groups of 3. -->
+                      {% for product in collection.products %}
+                        {% include 'product-list' with '3' %}
+                      {% endfor %}
 
-        {% if collection.products.size == 0 %}
-          <div class="panel panel-default">
-            <div class="panel-body">
-              No products found in this collection.
-            </div>
+                      <div class="text-center">
+                        {% include 'pagination' with 'product' %}
+                      </div>
+                {% endpaginate %}
+            {% endif %}
           </div>
-        {% else %}
-          <!-- Include product list in groups of 3. -->
-          {% for product in collection.products %}
-            {% include 'product-list' with '3' %}
-          {% endfor %}
-
-          <div class="text-center">
-            {% include 'pagination' with 'product' %}
-          </div>
-        {% endif %}
-
-        {% endpaginate %}
-      </div>
-
-      <!-- Product Tags (Desktop & Tablet) -->
-      <div class="col-md-2 col-md-offset-1 hidden-xs text-right">
-        {% include 'tag-list' with collection %}
-      </div>
-
-      <!-- Product Tags (Phone) -->
-      <div class="col-md-2 col-md-offset-1 visible-xs text-center">
-        {% include 'tag-list' with collection %}
-      </div>
-
-    </div>
+        </div>
+    </article>
 </div>

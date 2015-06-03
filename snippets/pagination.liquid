@@ -17,9 +17,9 @@
 {% endcomment %}
 <ul class="pagination">
   {% if paginate.previous %}
-      <li><a href="{{ paginate.previous.url }}" title="{{ paginate.previous.title }}">&larr;</a></li>
+      <li><a href="{{ paginate.previous.url }}" title="{{ paginate.previous.title }}"><i class="fa fa-angle-double-left"></i></a></li>
   {% else %}
-      <li class="disabled"><span>&larr;</span></li>
+      <li class="disabled"><span><i class="fa fa-angle-double-left"></i></span></li>
   {% endif %}
 
   {% for part in paginate.parts %}
@@ -35,9 +35,9 @@
   {% endfor %}
 
   {% if paginate.next %}
-    <li><a href="{{ paginate.next.url }}" title="{{ paginate.next.title }}">&rarr;</a></li>
+    <li><a href="{{ paginate.next.url }}" title="{{ paginate.next.title }}"><i class="fa fa-angle-double-right"></i></a></li>
   {% else %}
-    <li class="disabled"><span>&rarr;</span></li>
+    <li class="disabled"><span><i class="fa fa-angle-double-right"></i></span></li>
   {% endif %}
 </ul>
 <p class="text-muted">

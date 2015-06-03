@@ -9,6 +9,27 @@
         {% endif %}
         <li class="active">{{ product.title }}</li>
     {% elsif template contains 'collection' and collection.handle %}
+
+        <!-- IS THE SUB COLLECTION A CHILD A COLLECTION IN THE MAIN NAVIGATION -->
+        {% assign parent_collection = '' %}
+        {% unless linklists[settings.navbar_linklist] == empty %}
+            {% for link in linklists[settings.navbar_linklist].links %}
+                {% for sub_link in linklists[link.handle].links %}
+                    {% if sub_link.handle == collection.handle %}
+                        {% assign parent_collection = link.object %}
+                        {% break %}
+                    {% endif %}
+                    {% unless parent_collection == '' %}
+                        {% break %}
+                    {% endunless %}
+                {% endfor %}
+            {% endfor %}
+        {% endunless %}
+
+        {% unless parent_collection == '' %}
+            <li>{{ parent_collection.title | link_to: parent_collection.url }}</li>
+        {% endunless %}
+
         {% if current_tags %}
             {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
             <li>{{ collection.title | link_to: url }}</li>
