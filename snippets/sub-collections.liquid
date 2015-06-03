@@ -1,0 +1,42 @@
+{% assign has_subs = false %}
+{% if linklists[collection.handle] and linklists[collection.handle].links.size > 0 %}
+    {% assign has_subs = true %}
+{% endif %}
+
+{%  if has_subs %}
+    <article class="sub-collections">
+        {% for sub in linklists[collection.handle].links %}
+            {% if sub-collections == '1' %}
+                {% capture iteration %}{% cycle '1' %}{% endcapture %}
+                {% elsif sub-collections == '2' %}
+                {% capture iteration %}{% cycle '1', '2' %}{% endcapture %}
+                {% elsif sub-collections == '3' %}
+                {% capture iteration %}{% cycle '1', '2', '3' %}{% endcapture %}
+                {% elsif sub-collections == '4' %}
+                {% capture iteration %}{% cycle '1', '2', '3', '4' %}{% endcapture %}
+                {% elsif sub-collections == '6' %}
+                {% capture iteration %}{% cycle '1', '2', '3', '4', '5', '6' %}{% endcapture %}
+            {% endif %}
+
+            {% if iteration == '1' %}
+                <div class="row">
+            {% endif %}
+                <div class="col-sm-{{ 12 | divided_by: sub-collections }}">
+                    <div class="collection-thumb">
+                        <a href="{{ sub.url }}">
+                            {% assign sub_collection = sub.object %}
+                            {% if sub_collection.image %}
+                                <div class="image" style="background-image: url({{ sub_collection.image | collection_img_url: 'large' }});"></div>
+                            {% else %}
+                                <div class="placeholder"></div>
+                            {% endif %}
+                            <div class="caption">{{ sub.title }}</div>
+                        </a>
+                    </div>
+                </div>
+            {% if (iteration == sub-collections) or forloop.last %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </article>
+{% endif %}

@@ -14,18 +14,7 @@
     {% endunless %}
 
     <!-- Sub Collections -->
-    {% assign has_subs = false %}
-    {% if linklists[collection.handle] and linklists[collection.handle].links.size > 0 %}
-        {% assign has_subs = true %}
-    {% endif %}
-
-    {%  if has_subs %}
-        <article class="sub-collections">
-            {% for sub in linklists[collection.handle].links %}
-                <h1><a href="{{ sub.url }}">{{ sub.title }}</a></h1>
-            {% endfor %}
-        </article>
-    {% endif %}
+    {% include 'sub-collections' with '3' %}
 
     <div class="row">
       <!-- Products -->
