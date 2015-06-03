@@ -19,8 +19,6 @@
         {% assign has_subs = true %}
         {% include 'sub-collections' with '3' %}
     {% endif %}
-
-    <article class="products">
         <div class="row">
           <!-- Products -->
           <div class="col-md-12">
@@ -33,18 +31,19 @@
                       </div>
                 {% endif %}
             {% else %}
-                {% paginate collection.products by 12 %}
-                      <!-- Include product list in groups of 3. -->
-                      {% for product in collection.products %}
+                <article class="products">
+                    {% paginate collection.products by 12 %}
+                    <!-- Include product list in groups of 3. -->
+                    {% for product in collection.products %}
                         {% include 'product-list' with '3' %}
-                      {% endfor %}
+                    {% endfor %}
 
-                      <div class="text-center">
+                    <div class="text-center">
                         {% include 'pagination' with 'product' %}
-                      </div>
-                {% endpaginate %}
+                    </div>
+                    {% endpaginate %}
+                </article>
             {% endif %}
           </div>
         </div>
-    </article>
 </div>
