@@ -42,6 +42,7 @@ small {
     transform: translate(-50%,0);
     -webkit-transform: translate(-50%,0);
     -ms-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
     top: 0px;
 }
 
@@ -80,6 +81,9 @@ small {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
 }
 
 .well-lg {
@@ -107,7 +111,7 @@ small {
     font-weight: 100;
     font-size: 1.8em;
     margin: 0px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .breadcrumb {
@@ -116,6 +120,7 @@ small {
     border-bottom: solid 2px #c0bfbb;
     padding-bottom: 20px;
     padding-top: 0px;
+    letter-spacing: 3px;
 }
 
 .breadcrumb > li + li:before {
@@ -222,6 +227,7 @@ small {
 /* BUTTONS */
 .btn {
     text-transform: uppercase;
+    letter-spacing: 1px;
     padding: 15px 35px;
     transition: all 0.3s ease;
     padding: 13px 35px;
@@ -292,6 +298,7 @@ h1, h2, h3, h4 {
 
 h1, h2, h3, h5 {
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 h4 .fa {
@@ -307,15 +314,11 @@ h4 .fa {
     padding: 6px 12px;
 }
 
-input[type="search"] {
+input.search {
     box-sizing: border-box;
     background: url('icon-search.png') no-repeat 8px center;
     background-size: 14px;
     padding: 6px 12px 6px 30px;
-}
-
-input[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: searchfield-cancel-button;
 }
 
 label {
@@ -340,6 +343,7 @@ label {
     border-radius: 0px;
     text-align: center;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 1.1em;
     padding: 5px;
 }
@@ -383,8 +387,8 @@ label {
     .nav.main-nav > li {
         padding-left: 0px;
         padding-right: 0px;
-        margin-right: 17px;
-        margin-left: 17px;
+        margin-right: 14px;
+        margin-left: 14px;
     }
 
     .main-nav {
@@ -467,6 +471,7 @@ label {
         width: 100%;
         text-align: center;
         text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .navbar-default .navbar-nav {
@@ -517,9 +522,10 @@ label {
         padding: 10px 5px;
     }
 
-    nav input[type="search"] {
+    nav input.search {
         margin-top: 15px;
         font-style: italic;
+        z-index: 200;
     }
 
     .dropdown-menu {
@@ -528,6 +534,9 @@ label {
         left: 50%;
         right: auto;
         transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
         z-index: 1000;
         display: none;
         float: left;
@@ -735,8 +744,10 @@ label {
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
     color: white;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 1.5em;
     text-align: center;
     font-weight: normal;
@@ -799,8 +810,10 @@ label {
     transform: translate(0, -50%);
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
+    -moz-transform: translate(0,-50%);
     color: white;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 1em;
     text-align: center;
     font-weight: normal;
@@ -883,7 +896,7 @@ label {
     border: solid 1px red;
 }
 
-#mc_embed_signup .error,
+#mc_embed_signup .danger,
 #mc_embed_signup .success {
     font-style: italic;
     margin-bottom: 10px;
@@ -899,6 +912,12 @@ label {
 
 .contact .location {
     margin-bottom: 30px;
+}
+
+.contact #mc-embedded-subscribe.btn-block {
+    width: auto;
+    margin: 0 auto;
+    padding: 10px 70px;
 }
 
 /* MAP */
@@ -953,6 +972,7 @@ footer.footer {
 .footer-nav li {
     padding: 0px 21px;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 1.2em;
 }
 
@@ -1030,6 +1050,9 @@ footer .payment-methods .fa {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
 .gallery .list a:hover .placeholder:after,
@@ -1164,6 +1187,7 @@ footer .payment-methods .fa {
     color: #F5F4F0;
     background-color: rgba(53, 53, 53, .7);
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 1.3em;
     padding: 15px;
     transition: all 0.3s ease-out;
@@ -1183,6 +1207,7 @@ footer .payment-methods .fa {
 
 .collection .products small {
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: bold;
     font-size:.7em;
 }
@@ -1202,22 +1227,30 @@ footer .payment-methods .fa {
 
 .product .price small {
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-weight: bold;
 }
 
 /** CONTACT **/
-.well.call-back {
-    background-color: #5D5A4B;
-    font-size: 1.8em;
+.btn.call-back {
+    background-color: #353535;
+    font-size: 1.6em;
     font-weight: 100;
     text-align: center;
     position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    text-transform: none;
+    letter-spacing: none;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.well.call-back .fa {
+.btn.call-back .fa {
     position: absolute;
-    top: 18px;
-    left: 25px;
+    top: 8px;
+    left: 55px;
     font-size: 1.5em;
 }
 
@@ -1262,6 +1295,7 @@ footer .payment-methods .fa {
     background-color: #353535 !important;
     text-align: center;
     text-transform: uppercase;
+    letter-spacing: 1px;
     padding: 13px 35px;
 }
 
@@ -1315,6 +1349,7 @@ footer .payment-methods .fa {
         background-color: #353535;
         text-align: center;
         text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {

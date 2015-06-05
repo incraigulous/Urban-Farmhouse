@@ -12,7 +12,7 @@
     <!-- Additional (Right) Navigation Links -->
     <div class="navbar-left hidden-xs">
         <form method="get" action="/search" class="search">
-            <input name="q" class="form-control" type="search" placeholder="search"/>
+            <input name="q" class="form-control search" type="text" placeholder="search"/>
         </form>
     </div>
 
@@ -66,8 +66,8 @@
                       </li>
                   {% endif %}
               {% endif %}
-              <li class="cart-link">
-                  <a href="/cart"><i class="fa fa-shopping-cart"></i> Cart ({{ cart.item_count }})</a>
+              <li class="cart-link" style="padding-top: 10px">
+                  <!--<a href="/cart"><i class="fa fa-shopping-cart"></i> Cart ({{ cart.item_count }})</a>-->
               </li>
           </ul>
           <!-- Social Media Icons -->

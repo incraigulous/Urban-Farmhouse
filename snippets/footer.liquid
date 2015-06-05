@@ -14,9 +14,7 @@
                         <a href="{{ link.url }}">{{ link.title }}</a>
                     </li>
                     {% unless forloop.last %}
-                    <li class="muted">
-                        &middot;
-                    </li>
+                    <li class="muted"></li>
                     {% endunless %}
                 {% endfor %}
             </ul>
@@ -25,7 +23,7 @@
 
     <!-- Payment Methods -->
     <ul class="footer-links payment-methods">
-      {% include 'footer-pay' %}
+      <!-- {% include 'footer-pay' %} -->
     </ul>
 
     <small class="legal">
