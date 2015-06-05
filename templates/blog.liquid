@@ -8,23 +8,25 @@
 <div class="container">
   <div class="row">
       <!-- Articles List -->
-      <div class="col-md-9 list-view">
+      <div class="col-md-12">
           {% paginate blog.articles by 5 %}
-          {% for article in blog.articles %}
-              <h4><a href="{{ article.url }}">{{ article.title | escape }}</a> </h4>
+              {% for article in blog.articles %}
+                  <article>
+                      <h4><a href="{{ article.url }}">{{ article.title | escape }}</a> </h4>
 
-              {% if article.excerpt.size > 0 %}
-                  {{ article.excerpt }}
-              {% else %}
-                  <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
-              {% endif %}
+                      {% if article.excerpt.size > 0 %}
+                          {{ article.excerpt }}
+                      {% else %}
+                          <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+                      {% endif %}
 
-              <small class="text-muted">{{ article.published_at | date: "%d %B %Y" }} by {{ article.author }}</small>
-          {% endfor %}
+                      <small class="text-muted">{{ article.published_at | date: "%d %B %Y" }}</small>
+                  </article>
+              {% endfor %}
 
-          <div class="text-center">
-              {% include 'pagination' with 'post' %}
-          </div>
+              <div class="text-center">
+                  {% include 'pagination' with 'post' %}
+              </div>
           {% endpaginate %}
       </div>
     </div>

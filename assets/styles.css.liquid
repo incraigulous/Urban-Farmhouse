@@ -179,6 +179,16 @@ small {
     background-image: url({{ 'pin.png' | asset_url }})
 }
 
+.thumbnail {
+    background-color: transparent;
+    border: none;
+    border-radius: inherit;
+}
+
+.pager li > a, .pager li > span {
+    border-radius: 0px;
+}
+
 /* OVERRIDES */
 @media (min-width: 768px) {
     .row.half-gutter {
@@ -195,6 +205,18 @@ small {
         margin-left: -15px;
         margin-right: 15px;
     }
+}
+
+.right-dotted {
+    border-right: dotted 1px #353535;
+}
+
+.bottom-dotted {
+    border-bottom: dotted 1px #353535;
+}
+
+.left-dotted {
+    border-left: dotted 1px #353535;
 }
 
 /* BUTTONS */
@@ -875,16 +897,33 @@ label {
     margin-left: 7px;
 }
 
+.contact .location {
+    margin-bottom: 30px;
+}
+
 /* MAP */
 .map-container {
     margin-bottom: 15px;
     width: 100%;
-    overflow: hidden;
+    height: 200px;
+}
+
+.map-container iframe {
+    border:0;
+    width: 100%;
+    height: 100%;
+}
+
+.home .map-container {
     height: 125px;
 }
 
 .directions-link {
     float: right;
+}
+
+.home .location {
+    text-align: left;
 }
 
 /* STORE HOURS */
@@ -926,18 +965,20 @@ footer .payment-methods .fa {
     margin: 0px;
 }
 
-/* GALLERY */
+/* GALLERY & BLOG */
 .blog-view .wrapper {
     position:relative;
     margin:0 auto;
     height: 200px;
 }
 
+.blog-post #post,
 .gallery .list,
 .gallery #post {
     display: none;
 }
 
+.blog-post #post .body,
 .gallery #post .body {
     padding: 0 15px;
 }
@@ -996,8 +1037,12 @@ footer .payment-methods .fa {
     color: rgb(126, 126, 126);
 }
 
+.blog-post #post-preloader,
 .gallery #post-preloader {
     min-height: 200px;
+}
+
+.gallery #post-preloader {
     display: none;
 }
 
@@ -1019,6 +1064,7 @@ footer .payment-methods .fa {
 }
 
 @media (min-width: 768px) {
+    .blog-post #post .content,
     .gallery #post .content {
         -webkit-column-count: 2;
         -moz-column-count: 2;
@@ -1032,19 +1078,27 @@ footer .payment-methods .fa {
         margin-left: -20px;
         margin-right: 10px;
     }
+
+    .blog-post .cheat-gutter {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 
+.blog-post #post .image .cover img,
 .gallery #post .image .cover img {
     margin: 0 auto;
 }
 
+.blog-post #post h2,
 .gallery #post h2 {
     text-transform: capitalize;
     font-weight: 100;
     font-size: 2.5em;
 }
 
+.blog-post #post .share,
 .gallery #post .share {
     display: inline-block;
     float: right;
@@ -1052,11 +1106,13 @@ footer .payment-methods .fa {
     top: 10px;
 }
 
+.blog-post #post .cover-wrap.image,
 .gallery #post .cover-wrap.image {
     background-size: cover;
     background-repeat: none;
 }
 
+.blog-post #post .image .cover,
 .gallery #post .image .cover {
     background-color: rgba(53, 53, 53, .8);
 }
@@ -1107,7 +1163,6 @@ footer .payment-methods .fa {
     text-align: center;
     color: #F5F4F0;
     background-color: rgba(53, 53, 53, .7);
-    font-weight: 100;
     text-transform: uppercase;
     font-size: 1.3em;
     padding: 15px;
@@ -1130,6 +1185,84 @@ footer .payment-methods .fa {
     text-transform: uppercase;
     font-weight: bold;
     font-size:.7em;
+}
+
+/** PRODUCT **/
+.product h2 {
+    font-weight: 100;
+    font-size: 3.6em;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+
+.product .price {
+    margin: 15px 0;
+    font-size: 1.8em;
+}
+
+.product .price small {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/** CONTACT **/
+.well.call-back {
+    background-color: #5D5A4B;
+    font-size: 1.8em;
+    font-weight: 100;
+    text-align: center;
+    position: relative;
+}
+
+.well.call-back .fa {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    font-size: 1.5em;
+}
+
+/** ADDONS **/
+.featherlight .featherlight-content {
+    background: #353535;
+}
+
+.featherlight .featherlight-close-icon:after {
+    content: '\f00d';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    font-size: 1.5em;
+    color: #F5F4F0;
+    font-family: 'FontAwesome';
+    background: #353535;
+}
+
+/** COGNITO **/
+
+.cognito,
+.cognito #c-forms-form {
+    font-family: Roboto;
+}
+
+.cognito input[type=text],
+.cognito input[type=password],
+.cognito select,
+.cognito textarea {
+    border: 1px solid #ccc;
+    padding: 8px !important;
+    font-family: Roboto;
+}
+
+.cognito #c-forms-form button,
+.cognito #c-forms-form input[type=button] {
+    border: 0px;
+    color: #F5F4F0;
+    background-color: #353535 !important;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 13px 35px;
 }
 
 /** TABLET **/
@@ -1273,5 +1406,20 @@ footer .payment-methods .fa {
         padding-left: 0px;
         padding-right: 0px;
         font-size: .9em;
+    }
+
+    /** MOBILE CONTACT **/
+    .contact {
+        text-align: center;
+    }
+
+    .contact form {
+        text-align: left;
+    }
+
+    /** ADDONS **/
+    /** FEATHERLIGHT **/
+    .featherlight {
+        display: none !important;
     }
 }

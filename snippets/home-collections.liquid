@@ -16,7 +16,21 @@
                                 {% if collection.image %}
                                     <img src="{{ collection.image | collection_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive" width="100%"/>
                                 {% else %}
-                                    <img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive" width="100%"/>
+                                    {% if collection.products.first.featured_image %}
+                                        <img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive" width="100%"/>
+                                    {% else %}
+                                        {% assign src = '' %}
+                                        {% if collection.content contains "<img" %}
+                                            {% assign src = collection.content | split: 'img src="' %}
+                                            {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+                                        {% endif %}
+                                        {% if src != '' %}
+                                            <img src="{{ src }}" alt="{{ collection.title | escape }}" class="img-responsive" width="100%"/>
+                                        {% else %}
+                                            <div class="placeholder"><img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape }}" class="img-responsive" width="100%" style="visibility: hidden; max-height: 200px;"/></div>
+                                        {% endif %}
+                                    {% endif %}
+
                                 {% endif %}
                                 <h5>{{ collection.title | escape }}</h5>
                             </a>

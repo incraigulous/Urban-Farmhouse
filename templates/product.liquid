@@ -1,41 +1,32 @@
 <!-- Wrapping Product Div -->
-<div itemscope itemtype="http://schema.org/Product">
+<div itemscope itemtype="http://schema.org/Product" class="product">
 
   <!-- Product Title and Price Information -->
   <header class="page-header">
     <h1>
-      <span itemprop="name">{{ product.title }}</span>
-      <small id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-        {% if product.available %}
-          {% if product.compare_at_price_max > product.price %}<del>{{ product.compare_at_price_max | money }}</del> {% endif %}
-          {% if product.price_varies %} from {% endif %}
-          <span itemprop="price">{{ product.price | money }}</span>
-          <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
-
-          {% if product.compare_at_price_max > product.price and settings.product_show_sale_tag %}
-            <span class="label label-success">SALE</span>
+      <span itemprop="name">
+          {% if collection.title %}
+                {{ collection.title }}
+          {% else %}
+                Products
           {% endif %}
-        {% else %}
-          <em>Currently Unavailable</em>
-        {% endif %}
-
-        <!-- Availability Microdata -->
-        <meta itemprop="availability" content="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}" />
-      </small>
+      </span>
     </h1>
   </header>
+
+  {% include 'breadcrumbs' %}
 
   <!-- Product Details -->
   <div class="row">
 
     <!-- Product Images & Social Widgets -->
-    <div class="col-md-4">
+    <div class="col-sm-6">
       <!-- Primary Image -->
       <p>
         {% if product.images.size > 0 %}
-        <a href="{{ product.images | first | product_img_url: 'large' }}" title="{{ product.title | escape }}" class="thumbnail">
-          <img src="{{ product.images | first | product_img_url: 'large' }}" alt="{{ product.title | escape }}" itemprop="image" />
-        </a>
+            <a href="{{ product.images | first | product_img_url: 'grande' }}" title="{{ product.title | escape }}" class="thumbnail" data-featherlight="image">
+              <img src="{{ product.images | first | product_img_url: 'large' }}" alt="{{ product.title | escape }}" itemprop="image"/>
+            </a>
         {% else %}
         <span class="thumbnail">
           <img src="{{ 'img-no-image.png' | asset_url }}" alt="No Image" />
@@ -49,13 +40,13 @@
         {% capture iteration %}{% cycle '1', '2' %}{% endcapture %}
 
           {% if iteration == '1' %}
-          <div class="row">
+          <div class="row hidden-xs">
           {% endif %}
 
             <div class="col-sm-6">
               <p>
-                <a href="{{ image | product_img_url: 'large' }}" title="{{ product.title | escape }}" class="thumbnail">
-                  <img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" itemprop="image" />
+                <a href="{{ image | product_img_url: 'grande' }}" title="{{ product.title | escape }}" class="thumbnail" data-featherlight="image">
+                  <img src="{{ image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" itemprop="image" />
                 </a>
               </p>
             </div>
@@ -66,86 +57,88 @@
       {% endunless %}
       {% endfor %}
 
-      <!-- Social Widgets -->
-      <p>
-        {% if settings.product_show_twitter %}
-        {% include 'social-widget' with 'twitter' %}
-        {% endif %}
-
-        {% if settings.product_show_facebook %}
-        {% include 'social-widget' with 'facebook' %}
-        {% endif %}
-
-        {% if settings.product_show_pinterest %}
-        {% include 'social-widget' with 'pinterest' %}
-        {% endif %}
-      </p>
     </div> <!-- End Product Images & Social Widgets -->
 
-    <!-- Add to Cart Form -->
-    <div class="col-md-4 col-md-push-4">
-      <form action="/cart/add" method="post" role="form">
+    <!-- Product Description -->
+    <div class="col-md-6" itemprop="description">
+      <h2>{{ product.title }}</h2>
+      {{ product.description }}
+
+        <hr />
+
+       <div class="price">
+           {% if product.available %}
+               {% if product.price_varies %}<small>base price:</small> {% endif %}
+               <span itemprop="price">${{ product.price | money_without_currency }}</span>
+               <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+
+               {% if product.compare_at_price_max > product.price and settings.product_show_sale_tag %}
+                   <span class="label label-success">SALE</span>
+               {% endif %}
+           {% else %}
+               <em>Currently Unavailable</em>
+           {% endif %}
+       </div>
+
+        <hr />
+
+        <a href="/pages/call-back-request">
+            <div class="well call-back" >
+                <i class="fa fa-phone"></i> Request a call back
+            </div>
+        </a>
+
+        <hr />
+
+        <!-- Social Widgets -->
+        <ul class="list-inline social">
+
+            {% if settings.product_show_twitter %}
+                <li>
+                    {% include 'social-widget' with 'facebook' %}
+                </li>
+
+            {% endif %}
+
+            {% if settings.product_show_facebook %}
+                <li>
+                    {% include 'social-widget' with 'twitter' %}
+                </li>
+            {% endif %}
+
+            {% if settings.product_show_pinterest %}
+                <li>
+                    {% include 'social-widget' with 'pinterest' %}
+                </li>
+            {% endif %}
+        </ul>
+
+    </div> <!-- End Product Description -->
+  </div>
+</div> <!-- End wrapping product div. -->
+
+<!-- Add to Cart Form -->
+<div class="col-md-4 col-md-push-4 hide">
+    <!--<form <!--action="/cart/add" method="post" role="form">-->
+    <form>
 
         <!-- Product Variants -->
         {% if product.variants.size > 1 %}
-          <div class="form-group">
-            <select id="product-select" name="id" class="form-control">
-              {% for variant in product.variants %}
-                <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-              {% endfor %}
-            </select>
-          </div>
+            <div class="form-group">
+                <select id="product-select" name="id" class="form-control">
+                    {% for variant in product.variants %}
+                        <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                    {% endfor %}
+                </select>
+            </div>
         {% else %}
-          <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
         {% endif %}
 
-        <!-- Add To Cart Button -->
+        <!-- Add To Cart Button
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-lg" id="product-add">Add to Cart</button>
-        </div>
+        </div>-->
 
-      </form>
-    </div> <!-- End Add to Cart Form -->
-
-    <!-- Product Description -->
-    <div class="col-md-4 col-md-pull-4" itemprop="description">
-      {{ product.description }}
-    </div> <!-- End Product Description -->
-  </div>
-
-  <!-- Additional Image Thumbnails for mobile devices, and pager for navigation between collection products. -->
-  <div class="row">
-
-    <!-- Additional Image Thumbnails for mobile devices. -->
-    <div class="col-md-4">
-      {% for image in product.images %}
-      {% unless forloop.first %}
-        <a href="{{ image | product_img_url: 'large' }}" title="{{ product.title | escape }}" class="thumbnail visible-xs">
-          <img src="{{ image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" />
-        </a>
-      {% endunless %}
-      {% endfor %}
-    </div>
-
-    <!-- Navigation between products in a collection: see http://wiki.shopify.com/How_to_Navigate_within_a_Collection -->
-    <div class="col-md-8">
-      {% if collection %}
-      <hr />
-      <ul class="pager">
-        {% if collection.previous_product %}
-          <li class="previous"><a href="{{ collection.previous_product }}">&larr; Previous</a></li>
-        {% else %}
-          <li class="previous disabled"><a href="#">&larr; Previous</a></li>
-        {% endif %}
-
-        {% if collection.next_product %}
-          <li class="next"><a href="{{ collection.next_product }}">Next &rarr;</a></li>
-        {% else %}
-          <li class="next disabled"><a href="#">Next &rarr;</a></li>
-        {% endif %}
-      </ul>
-      {% endif %}
-    </div>
-  </div>
-
-</div> <!-- End wrapping product div. -->
+    </form>
+</div> <!-- End Add to Cart Form -->

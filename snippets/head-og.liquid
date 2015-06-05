@@ -31,7 +31,7 @@
   <meta property="article:tag" content="{{ tag }}" />
   {% endfor %}
   {% if article.content contains '<img' %}
-    {% assign src = article.content | split: 'src="' %}
+    {% assign src = article.content | split: 'img src="' %}
     {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn' | replace: 'http:http://', 'http://' | remove: 'https:'  %}
     {% if src %}<meta property="og:image" content="{{ src }}" />{% endif %}
  {% endif %}

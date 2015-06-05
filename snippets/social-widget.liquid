@@ -23,16 +23,18 @@
         {% assign social_title = {{ product.title | escape }} by {{ product.vendor | escape }} %}
     {% endif %}
 {% endunless %}
+
+{% assign is_product = '' %}
 {% unless social_media %}
-    {% assign social_media = {{ product.featured_image | product_img_url: 'compact' | split:'?' | first  }} %}
+    {% assign is_product = true %}
 {% endunless %}
 
 {% if social-widget == 'twitter' %}
     <span class="st_twitter_custom st" displaytext="Tweet" st_via="urbanfarmhoused" st_username="urbanfarmhoused" st_url="{{  social_url }}" st_title="{{ social_title }}"></span>
 {% endif %}
 {% if social-widget == 'facebook' %}
-    <span class="st_facebook_custom st" displaytext="Facebook" st_url="{{  social_url }}" st_title="{{ social_title }}" st_image="{{ social_media }}" st_summary="{{ social_text }}"></span>
+    <span class="st_facebook_custom st" displaytext="Facebook" st_url="{{  social_url }}" st_title="{{ social_title }}" st_image="{% if is_product == '' %}{{  social_media }}{% else %}{{ product.featured_image | product_img_url: 'grande' | split:'?' | first  }}{% endif %}" st_summary="{{ social_text }}"></span>
 {% endif %}
 {% if social-widget == 'pinterest' %}
-    <span class="st_pinterest_custom st" displaytext="Pinterest" st_url="{{  social_url }}" st_title="{{ social_title }}" st_image="{{ social_media }}" st_summary="{{ social_text }}"></span>
+    <span class="st_pinterest_custom st" displaytext="Pinterest" st_url="{{  social_url }}" st_title="{{ social_title }}" st_image="{% if is_product == '' %}{{  social_media }}{% else %}{{ product.featured_image | product_img_url: 'grande' | split:'?' | first  }}{% endif %}" st_summary="{{ social_text }}"></span>
 {% endif %}

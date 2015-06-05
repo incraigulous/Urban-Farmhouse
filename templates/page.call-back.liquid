@@ -1,0 +1,23 @@
+<header class="page-header">
+  <h1>{{ page.title }}</h1>
+</header>
+
+{% include 'breadcrumbs' %}
+
+<div class="speciality">
+    <div class="row">
+        <div class="col-sm-4">
+            <article>
+                {{ page.content }}
+            </article>
+        </div>
+        <div class="col-sm-8">
+            <article>
+                <div class="cognito">
+                    <script src="https://services.cognitoforms.com/s/u9g_57a94km_ElXLxBlMxA"></script>
+                    <script>Cognito.load("forms", { id: "1" });</script>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

@@ -43,6 +43,9 @@ var BlogView = new Class({
         this.loadPost(initialPostUrl, initialPostAnchor);
     },
 
+    /**
+     * Init the slick.js slider
+     */
     initSlick: function () {
         this.list.on('init', $.proxy(function(event, slick, direction){
             this.removePreloader();
@@ -86,6 +89,11 @@ var BlogView = new Class({
         });
     },
 
+    /**
+     * Get a post via AJAX and inject it into the post container.
+     * @param url
+     * @param anchor
+     */
     loadPost: function (url, anchor) {
         var self = this;
         $.ajax({
@@ -95,42 +103,27 @@ var BlogView = new Class({
                 self.showPostPreloader();
             }
         }).done(function(html) {
-            var html = $(html).find(self.options.postContainerSelector);
-            var image = html.find('.content').find('img').first();
-            var video = html.find('.content').find('iframe').first();
-
             self.container.find('.slick-track a').removeClass('active');
             anchor.addClass('active');
 
-            if (video.length) {
+            $(this).on("blog-video-injected", function() {
                 anchor.addClass('video');
-                $(this).html(video);
-                var clone = video.clone();
-                video.hide();
-                video.closest('p').hide();
-                if (image.length) {
-                    image.hide();
-                    image.closest('p').hide();
-                }
-                $(this).html('<div class="cover-wrap video"><div class="cover cheat-gutter embed-responsive embed-responsive-16by9">' + clone.prop('outerHTML') + '</div></div>');
-            } else if (image.length) {
-                image.addClass('img-responsive');
-                var clone = image.clone();
-                image.hide();
-                image.closest('p').hide();
-                $(this).html("<div class='cover-wrap image cheat-gutter' style='background-image: url(" + image.attr("src") + ");'><div class='cover image'>" + clone.prop('outerHTML') + '</div></div>');
-            } else {
-                $(this).html('<div class="body">' + html.html() + '</div>');
+            });
+
+            $(this).on("blog-complete", function() {
                 stButtons.locateElements();
                 self.removePostPreloader();
-                return;
-            }
-            $(this).append('<div class="body">' + html.html() + '</div>');
-            stButtons.locateElements();
-            self.removePostPreloader();
+            });
+
+            var blog = new Blog(this, html);
         });
     },
 
+    /**
+     * Helper function to get URL params.
+     * @param name
+     * @returns {string}
+     */
     getParameter: function (name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -138,16 +131,25 @@ var BlogView = new Class({
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
 
+    /**
+     * Hide the preloader div.
+     */
     removePreloader: function () {
         $(this.options.preloaderSelector).hide();
         $(this.list).fadeIn();
     },
 
+    /**
+     * Show the post preloader.
+     */
     showPostPreloader: function () {
         $(this.options.postContainerSelector).hide();
         $(this.options.postPreloaderSelector).fadeIn();
     },
 
+    /**
+     * Hide the post preloader.
+     */
     removePostPreloader: function () {
         $(this.options.postPreloaderSelector).hide();
         $(this.options.postContainerSelector).fadeIn();

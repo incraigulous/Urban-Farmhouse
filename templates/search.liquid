@@ -23,17 +23,11 @@
         </header>
 
         <!-- Search Box -->
-        <form action="/search" role="form">
-            <div class="row">
-              <div class="col-md-4">
-                  <div class="input-group">
-                    <input type="search" name="q" value="{{ search.terms }}" placeholder="Enter a search term..." class="form-control" />
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
-                    </span>
-                  </div>
-              </div>
+        <form action="/search" role="form" class="form-inline text-center">
+            <div class="form-group">
+                    <input type="search" name="q" value="{{ search.terms }}" placeholder="Enter a search term..." class="form-control input-lg" />
             </div>
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
         </form>
 
         <!-- Feedback on number of results found. -->

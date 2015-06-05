@@ -450,6 +450,104 @@
       }
     ]
   },
+
+  {
+    "name": "Locations",
+    "settings": [
+      {
+        "type": "header",
+        "content": "First Location"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enabled"
+      },
+      {
+        "type": "checkbox",
+        "id": "location_1",
+        "label": "Show First Location"
+      },
+      {
+        "type": "textarea",
+        "id": "location_info_1",
+        "label": "Location Info"
+      },
+      {
+        "type": "textarea",
+        "id": "location_embed_1",
+        "label": "Map Embed Code (optional)"
+      },
+      {
+        "type": "header",
+        "content": "Second Location"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enabled"
+      },
+      {
+        "type": "checkbox",
+        "id": "location_2",
+        "label": "Show Second Location"
+      },
+      {
+        "type": "textarea",
+        "id": "location_info_2",
+        "label": "Location Info"
+      },
+      {
+        "type": "textarea",
+        "id": "location_embed_2",
+        "label": "Map Embed Code (optional)"
+      },
+      {
+        "type": "header",
+        "content": "Third Location"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enabled"
+      },
+      {
+        "type": "checkbox",
+        "id": "location_3",
+        "label": "Show Third Location"
+      },
+      {
+        "type": "textarea",
+        "id": "location_info_3",
+        "label": "Location Info"
+      },
+      {
+        "type": "textarea",
+        "id": "location_embed_3",
+        "label": "Map Embed Code (optional)"
+      },
+      {
+        "type": "header",
+        "content": "Fourth Location"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enabled"
+      },
+      {
+        "type": "checkbox",
+        "id": "location_4",
+        "label": "Show Fourth Location"
+      },
+      {
+        "type": "textarea",
+        "id": "location_info_4",
+        "label": "Location Info"
+      },
+      {
+        "type": "textarea",
+        "id": "location_embed_4",
+        "label": "Map Embed Code (optional)"
+      }
+    ]
+  },
   {
     "name": "Footer",
     "settings": [

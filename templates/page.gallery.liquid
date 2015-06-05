@@ -30,8 +30,8 @@
                         {% for article in blogs[page.handle].articles limit: 50 %}
                             {% assign src = '' %}
                             {% if article.content contains "<img" %}
-                                {% assign src = article.content | split: 'src="' %}
-                                {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+                                {% assign src = article.content | split: 'img src="' %}
+                                {% assign src = src.last | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
                             {% endif %}
                             <div class="slide">
                                 <a href="{{ article.url }}" article-id="{{ article.id }}">

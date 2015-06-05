@@ -3,7 +3,7 @@
     {% for article in blogs['news'].articles %}
         {% assign src = '' %}
         {% if article.content contains "<img" %}
-            {% assign src = article.content | split: 'src="' %}
+            {% assign src = article.content | split: 'img src="' %}
             {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
             {% if src %}
                 <img src="{{ src }}" class="img-responsive">

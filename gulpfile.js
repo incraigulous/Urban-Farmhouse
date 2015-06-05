@@ -16,6 +16,7 @@ gulp.task('default', function () {
     //Combine bower with files
     gulp.src([
         'assets/vendor.js',
+        'assets/blog.js',
         'assets/blogView.js',
         'assets/nav.js',
         'assets/main.js'

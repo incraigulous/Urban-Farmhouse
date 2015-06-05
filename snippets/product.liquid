@@ -22,9 +22,6 @@
 </h5>
 
 <p class="lead">
-    {% if product.compare_at_price_max > product.price %}
-        <del>{{ product.compare_at_price_max | money }}</del>
-    {% endif %}
     {% if product.price_varies %}
         <small>Base Price:</small>
     {% endif %}

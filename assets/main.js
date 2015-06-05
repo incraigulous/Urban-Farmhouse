@@ -7,6 +7,18 @@ function process_content(item) {
         new BlogView(el);
     });
 
+    $(item).find('.blog-post').each(function(index, el) {
+        var container = $(el).find('#post');
+
+        $(container).on("blog-complete", function() {
+            stButtons.locateElements();
+            $('#post-preloader').hide();
+            $('#post').fadeIn();
+        });
+
+        new Blog(container, $(el).clone());
+    });
+
     $(item).find('.slider').each(function(index, el) {
         $(el).find('image').attr('height', $(el).height());
         $(el).find('image').attr('width', $(el).width());
