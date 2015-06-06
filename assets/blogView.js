@@ -106,10 +106,6 @@ var BlogView = new Class({
             self.container.find('.slick-track a').removeClass('active');
             anchor.addClass('active');
 
-            $(this).on("blog-video-injected", function() {
-                anchor.addClass('video');
-            });
-
             $(this).on("blog-complete", function() {
                 stButtons.locateElements();
                 self.removePostPreloader();

@@ -33,8 +33,13 @@
                                 {% assign src = article.content | split: 'img src="' %}
                                 {% assign src = src.last | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
                             {% endif %}
+                            {% assign video = '' %}
+                            {% if article.content contains "<iframe" %}
+                                {% assign video = 'true' %}
+                            {% endif %}
+
                             <div class="slide">
-                                <a href="{{ article.url }}" article-id="{{ article.id }}">
+                                <a href="{{ article.url }}" article-id="{{ article.id }}" {% unless video == '' %}class="video"{% endunless %}>
                                     <div class="image" style="background-image:url('{{ src }}');">
                                         {% if src == blank %}
                                             <div class="placeholder"></div>
