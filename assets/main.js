@@ -40,6 +40,10 @@ function process_content(item) {
             });
         });
 
+        $(el).on('beforeChange', function(event, slick, currentSlide){
+            $('.slider-wrapper [data-toggle="popover"]').popover('hide')
+        });
+
         $(el).on('afterChange', function(event, slick, currentSlide){
             showCaptionBox(slick.$slides[currentSlide]);
         });
@@ -57,6 +61,14 @@ function process_content(item) {
 
     $(item).find('.main-nav').each(function(index, el) {
         new Nav(el);
+    });
+
+    $(item).find('[data-toggle="popover"]').each(function(index, el) {
+        $(el).popover();
+
+        $(el).find('.close').click(function() {
+            $(el).popover('hide');
+        });
     });
 }
 

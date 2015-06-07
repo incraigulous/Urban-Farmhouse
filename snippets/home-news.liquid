@@ -6,7 +6,7 @@
             {% assign src = article.content | split: 'img src="' %}
             {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
             {% if src %}
-                <img src="{{ src }}" class="img-responsive">
+                <img src="{{ src }}" class="img-responsive" width="100%">
                 <h4><i class="fa fa-newspaper-o"></i> {{ article.title }}</h4>
                 <div>
                     {{ article.content | strip_html | truncatewords: 100}} <a href="pages/news?article={{ article.id }}" class="read-more">READ MORE</a>

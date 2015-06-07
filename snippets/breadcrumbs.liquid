@@ -1,5 +1,5 @@
 {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
-<ol class="breadcrumb">
+<ol class="breadcrumb hidden-xs hidden-sm">
     <li><a href="/" title="Home">Home</a></li>
     {% if template contains 'page' %}
         <li class="active">{{ page.title }}</li>

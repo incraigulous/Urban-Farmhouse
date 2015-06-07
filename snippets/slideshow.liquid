@@ -16,17 +16,25 @@
         {% capture setting_title %}slideshow_title_{{i}}{% endcapture %}
         {% capture setting_description %}slideshow_description_{{i}}{% endcapture %}
 
+
         {% if settings[setting_show] %}
             {% assign slideshow_image = 'slideshow-image-' | append:i | append:'.jpg' | asset_url %}
             {% if forloop.index == 1 %}
-                <div class="preloader" id="slider-preloader">
-                    <img src="{{ slideshow_image }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden; height:auto;"/>
-                </div>
-                <div class="slider">
+                <div class="slider-wrapper">
+                    <div class="preloader" id="slider-preloader">
+                        <img src="{{ slideshow_image }}" class="img-responsive" {% if settings[setting_title] %}alt="{{ settings[setting_title] }}"{% endif %} style="visibility:hidden; height:auto;"/>
+                    </div>
+                    <div class="slider">
             {% endif %}
             <div style="background: url('{{ slideshow_image }}') no-repeat center center;" class="slide">
                 {% if settings[setting_title] or settings[setting_description] %}
-                    <div class="container-absolute">
+                    <div class="container-absolute" >
+                        {% if settings[setting_title] and settings[setting_description] %}
+                        <a class="visible-xs info" role="button" tabindex="0" data-container=".slider-wrapper" data-trigger="focus" data-viewport=".slider-wrapper" data-toggle="popover" data-html="1" data-placement="left" title="{{ settings[setting_title] }} <span class='close'><i class='fa fa-times-circle-o'></i></span>" data-content="{{ settings[setting_description] }} <a href='{{ settings[setting_url] }}' class='read-more'> {% if settings[setting_button_text] != '' %}{{ settings[setting_button_text] }}{% else %}Read more{% endif %}</a>">
+                            <i class="fa fa-info-circle"></i>
+                        </a>
+                        {% endif %}
+
                         <div class="caption">
                             {% if settings[setting_title] %}
                                 {% assign social_title = settings[setting_title] %}
@@ -54,6 +62,7 @@
             </div>
         {% endif %}
         {% if forloop.last == true %}
+                </div>
             </div>
         {%  endif %}
     {% endfor %}
